@@ -1,1 +1,1 @@
-# *[Link](www.raining.gay)*
+# *[Link](https://raining.gay)*
