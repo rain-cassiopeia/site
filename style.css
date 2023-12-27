@@ -1,12 +1,8 @@
-/* currently employed on my index.html page */
 body {
     background-image: url('https://media.tenor.com/e2TLdJ7Dr14AAAAC/sh.gif');
     background-size: cover; 
     background-attachment: fixed;
     background-position: top;
-  /*   font-fam\ly: system-ui; */
-  /*   color: #abcdef; */
-  /*   text-align: center; */
 }
 .centered-box {
 /*           width: 300px;  */
