@@ -4,6 +4,7 @@ body {
     background-attachment: fixed;
     background-position: top;
 }
+
 .centered-box {
   margin: 0 auto; 
   background-color: rgba(41, 125, 182, 0.5); 
@@ -29,7 +30,7 @@ body {
   background-color: rgba(38, 94, 69, 0.7); 
   outline: 3px solid rgba(41, 82, 64, 0.9); 
   color: #d6d6ae;
-  }
+}
 
 #_2, #_3, #_4 {
   display: inline-block;
