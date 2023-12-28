@@ -5,11 +5,12 @@ body {
     background-position: top;
 }
 .centered-box {
-/*           width: 300px;  */
   margin: 0 auto; 
   background-color: rgba(41, 125, 182, 0.5); 
-  position: relative; 
-  top: 120px; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 20px; 
   text-align: center;
   font-family: 'didot', serif;
@@ -30,24 +31,12 @@ body {
   color: #d6d6ae;
   }
 
-.sad_button {
-  background-color: rgba(127, 107, 144, 0.5); 
-  outline: 3px solid rgba(124, 77, 144, 0.8);
-  color: #c9c9a5;
-}
-
-.sad_button:hover {
-  background-color: rgba(101, 85, 115, 0.5); 
-  outline: 3px solid rgba(94, 59, 110, 0.8);
-  color: #d6d6ae;
-}
-
-#_2, #_3 {
+#_2, #_3, #_4 {
   display: inline-block;
   text-align: center;
   text-decoration: none;
   border-radius: 15px;
-  font-size: 30px; 
+  font-size: 25px; 
   font-family: 'georgia', serif;
   transition: background-color 0.3s, color 0.3s, outline 0.3s;
 }
