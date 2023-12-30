@@ -19,10 +19,11 @@ class Pixel {
         this.alive = living;
     }
 }
-class Edge extends Pixel{
+class Edge{
     constructor(x, y, color) {
         //color is list of r, g, b.
-        super(x, y);
+        this.x = x;
+        this.y = y;
         this.alive = true;
         this.color = color;
         // window coordinates! this works for 2x2 pixels, would change for different pixel size.
@@ -36,13 +37,13 @@ class Edge extends Pixel{
         if (this.x > 0 && !pixList[(this.x - 1) + (pixX * this.y)].alive) { //left
             friendList.push([this.x - 1, this.y]);
         }
-        if (this.x < (pixX - 1) && pixList[(this.x + 1) + (pixX * this.y)]) { //right
+        if (this.x < (pixX - 1) && !pixList[(this.x + 1) + (pixX * this.y)].alive) { //right
             friendList.push([this.x + 1, this.y]);
         }
-        if (this.y > 0 && pixList[this.x + (pixX * (this.y - 1))]) { //top
+        if (this.y > 0 && !pixList[this.x + (pixX * (this.y - 1))].alive) { //top
             friendList.push([this.x, this.y - 1]);
         }
-        if (this.y < (pixY - 1) && pixList[this.x + (pixX * (this.y + 1))]) { //bottom
+        if (this.y < (pixY - 1) && !pixList[this.x + (pixX * (this.y + 1))].alive) { //bottom
             friendList.push([this.x, this.y + 1]);
         }
         return friendList;
@@ -61,26 +62,31 @@ class Edge extends Pixel{
 }
 
 function mutate(color) { // lots of ways to do this!! TODO: tweak :p
-    let newColor = [0, 0, 0]
+    let newColor = [color[0], color[1], color[2]];
     for (let i=0; i<3; i++) {
-        if (Math.random() < (1/3)) { //tweak me!
-            if (color[i] == 255) {newColor[i] = 254}
-            else if (color[i] == 0) {newColor[i] = 1}
-            else {
-                if (Math.random() < 0.5) {
-                    newColor[i]++;
-                }
-                else {
-                    newColor[i]--;
-                }
+        if (Math.random() < (1)) { //tweak me!
+            if (Math.random() < 0.5) {
+                newColor[i]+= 5;
             }
+            else {
+                newColor[i]-= 5;
+            }
+            if (color[i] > 255) {
+                newColor[i] = 255;
+            }
+            else if (color[i] < 0) {
+                newColor[i] = 0;
+            }
+            
         }
     }
     return newColor;
 }
 
 function spawn(parentColor, [px, py]) {
-    pixList[px + pixX * py].alive = true; 
+    // console.log(px);
+    // console.log(py);
+    pixList[px + (pixX * py)].alive = true; 
     let newColor = mutate(parentColor);
     let newPixel = new Edge(px, py, newColor);
     nextEdgeList.push(newPixel); // im assuming it would be quicker to do this without checking but idk
@@ -89,11 +95,13 @@ function spawn(parentColor, [px, py]) {
 }
 
 function cycle() {
+    console.log(`started (${edgeList.length})`);
     for (let i=0; i<edgeList.length; i++){
         // tick every live edge
         // this handles appending to nextEdgeList and drawing children to offscreenCanvas
         edgeList[i].tick(); 
     }
+    console.log("finished");
     edgeList = nextEdgeList;
     nextEdgeList = [];
     ctx.drawImage(offscreenCanvas, 0, 0);
@@ -101,9 +109,11 @@ function cycle() {
 
 function onClick(event) {
     setupCanvas()
-    let clickX = event.clientX / 2; // divide by 2 for 2x2 grid!
-    let clickY = event.clientY / 2;
-    spawn([200, 200, 200], [clickX, clickY]); // tweak with starting color?
+    let clickX = Math.floor(event.clientX / 2); // divide by 2 for 2x2 grid!
+    let clickY = Math.floor(event.clientY / 2);
+    nextEdgeList = [];
+    edgeList = [];
+    spawn([100, 100, 100], [clickX, clickY]); // tweak with starting color?
 }
 
 function doWindowSize() {
@@ -121,15 +131,16 @@ function setupCanvas(){
     offscreenCtx.clearRect(0, 0, winX, winY);
 
     //populating the pixList array:
+    pixList = [];
     for (let i=0; i<pixY; i++) { 
         for (let j=0; j<pixX; j++) {
-            pixList.push(new Pixel(i, j, false));
+            pixList.push(new Pixel(j, i, false));
         }
     }
 }
 
 setupCanvas();
-setInterval(cycle, 1000);
+setInterval(cycle, 100);
 document.addEventListener("click", onClick)
 
 // ctx.fillStyle = 'rgb(2, 200, 255)';

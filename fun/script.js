@@ -21,4 +21,6 @@ function getRandomPastelColor() {
   // Set interval to change button colors every 2 seconds
   setInterval(() => {
     changeButtonColor('1');
+    changeButtonColor('2');
+    
   }, 2000);
