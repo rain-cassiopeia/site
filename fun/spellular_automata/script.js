@@ -48,15 +48,20 @@ class Edge{
         }
         return friendList;
     }
-    tick() {
+    tick() { //tweak me too!
+        let tweak = false;
+        if (Math.random() < (2/3)) {
+            tweak = true;
+        }
         let friends = this.getFriends()
         let numfriends = friends.length;
         if (numfriends > 1) {
             nextEdgeList.push(this); // this could only be a live edge next round if dead neighbors > 2
-            spawn(this.color, friends[Math.floor(Math.random() * numfriends)]);
+            if (tweak) {spawn(this.color, friends[Math.floor(Math.random() * numfriends)])}
         }
         else if (numfriends == 1) {
-            spawn(this.color, friends[0]);
+            if (tweak) {spawn(this.color, friends[0])}
+            else {nextEdgeList.push(this)}
         }
     }
 }
@@ -66,10 +71,10 @@ function mutate(color) { // lots of ways to do this!! TODO: tweak :p
     for (let i=0; i<3; i++) {
         if (Math.random() < (1)) { //tweak me!
             if (Math.random() < 0.5) {
-                newColor[i]+= 5;
+                newColor[i]+= Math.floor(Math.random()*5);
             }
             else {
-                newColor[i]-= 5;
+                newColor[i]-= Math.floor(Math.random()*5);
             }
             if (color[i] > 255) {
                 newColor[i] = 255;
@@ -95,13 +100,12 @@ function spawn(parentColor, [px, py]) {
 }
 
 function cycle() {
-    console.log(`started (${edgeList.length})`);
+    console.log(`${edgeList.length} live edges!`);
     for (let i=0; i<edgeList.length; i++){
         // tick every live edge
         // this handles appending to nextEdgeList and drawing children to offscreenCanvas
         edgeList[i].tick(); 
     }
-    console.log("finished");
     edgeList = nextEdgeList;
     nextEdgeList = [];
     ctx.drawImage(offscreenCanvas, 0, 0);
@@ -113,7 +117,7 @@ function onClick(event) {
     let clickY = Math.floor(event.clientY / 2);
     nextEdgeList = [];
     edgeList = [];
-    spawn([100, 100, 100], [clickX, clickY]); // tweak with starting color?
+    spawn([Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)], [clickX, clickY]); // tweak with starting color?
 }
 
 function doWindowSize() {
@@ -139,8 +143,15 @@ function setupCanvas(){
     }
 }
 
+function animate() {
+    cycle();
+    requestAnimationFrame(animate);
+}
+
+
+
 setupCanvas();
-setInterval(cycle, 100);
+animate();
 document.addEventListener("click", onClick)
 
 // ctx.fillStyle = 'rgb(2, 200, 255)';
