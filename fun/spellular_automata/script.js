@@ -19,13 +19,13 @@ class Pixel {
         this.alive = living;
     }
 }
-class Edge{
-    constructor(x, y, color) {
+class Edge extends Pixel{
+    constructor(x, y, color, delta) {
         //color is list of r, g, b.
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.alive = true;
         this.color = color;
+        this.delta = delta
         // window coordinates! this works for 2x2 pixels, would change for different pixel size.
         this.real_x = 2 * this.x;
         this.real_y = 2 * this.y;
@@ -50,50 +50,74 @@ class Edge{
     }
     tick() { //tweak me too!
         let tweak = false;
-        if (Math.random() < (2/3)) {
+        if (Math.random() < (this.delta)) {
             tweak = true;
         }
         let friends = this.getFriends()
         let numfriends = friends.length;
         if (numfriends > 1) {
             nextEdgeList.push(this); // this could only be a live edge next round if dead neighbors > 2
-            if (tweak) {spawn(this.color, friends[Math.floor(Math.random() * numfriends)])}
+            if (tweak) {
+                spawn(this.color, this.delta, friends[Math.floor(Math.random() * numfriends)])
+            }
         }
         else if (numfriends == 1) {
-            if (tweak) {spawn(this.color, friends[0])}
+            if (tweak) {spawn(this.color, this.delta, friends[0])}
             else {nextEdgeList.push(this)}
         }
     }
 }
 
-function mutate(color) { // lots of ways to do this!! TODO: tweak :p
+function mutateColor(color) { // lots of ways to do this!! TODO: tweak :p
     let newColor = [color[0], color[1], color[2]];
-    for (let i=0; i<3; i++) {
-        if (Math.random() < (1)) { //tweak me!
-            if (Math.random() < 0.5) {
-                newColor[i]+= Math.floor(Math.random()*5);
-            }
-            else {
-                newColor[i]-= Math.floor(Math.random()*5);
-            }
-            if (color[i] > 255) {
-                newColor[i] = 255;
-            }
-            else if (color[i] < 0) {
-                newColor[i] = 0;
-            }
-            
+    if (Math.random() > SUM_ODDS) {return newColor}
+    if(Math.random() < R_ODDS) {
+        if (Math.random() < 0.5) {
+            newColor[0] = (newColor[0] + Math.floor(Math.random()*R_UP));
         }
+        else {
+            newColor[0] = (newColor[0] - Math.floor(Math.random()*R_DOWN));
+        }
+        if (COLORWRAPPING) {newColor[0] = newColor[0] % 256}
+    }
+    if(Math.random() < G_ODDS) {
+        if (Math.random() < 0.5) {
+            newColor[1] = (newColor[1] + Math.floor(Math.random()*G_UP));
+        }
+        else {
+            newColor[1] = (newColor[1] - Math.floor(Math.random()*G_DOWN));
+        }
+        if (COLORWRAPPING) {newColor[1] = newColor[1] % 256}
+    }
+    if(Math.random() < B_ODDS) {
+        if (Math.random() < 0.5) {
+            newColor[2] = (newColor[2] + Math.floor(Math.random()*B_UP));
+        }
+        else {
+            newColor[2] = (newColor[2] - Math.floor(Math.random()*B_DOWN));
+        }
+        if (COLORWRAPPING) {newColor[2] = newColor[2] % 256}
     }
     return newColor;
 }
 
-function spawn(parentColor, [px, py]) {
+function mutateDelta(delta) {
+    if (Math.random() > MUTATE_DELTA) {
+        return delta;
+    }
+    let rand_angle = Math.random()*2*Math.PI;
+    let mutation = D_DELTA * Math.sin(rand_angle);
+    delta += mutation;
+    delta = Math.max(0, Math.min(1, delta));
+    return delta;
+}
+
+function spawn(parentColor, parentDelta, [px, py]) {
     // console.log(px);
     // console.log(py);
     pixList[px + (pixX * py)].alive = true; 
-    let newColor = mutate(parentColor);
-    let newPixel = new Edge(px, py, newColor);
+    let newColor = mutateColor(parentColor);
+    let newPixel = new Edge(px, py, newColor, mutateDelta(parentDelta));
     nextEdgeList.push(newPixel); // im assuming it would be quicker to do this without checking but idk
     offscreenCtx.fillStyle = `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`;
     offscreenCtx.fillRect(newPixel.real_x, newPixel.real_y, 2, 2); // 2x2!
@@ -117,7 +141,11 @@ function onClick(event) {
     let clickY = Math.floor(event.clientY / 2);
     nextEdgeList = [];
     edgeList = [];
-    spawn([Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)], [clickX, clickY]); // tweak with starting color?
+    let startingColor = [START_R, START_G, START_B];
+    if (RAND_COLOR) {
+        startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+    }
+    spawn(startingColor, 0.67, [clickX, clickY]); // tweak with starting color?
 }
 
 function doWindowSize() {
