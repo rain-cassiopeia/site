@@ -1,7 +1,270 @@
 body {
+    background-color: rgb(255, 240, 221);
     margin: 0;
 }
 
 canvas {
     position: fixed;
+}
+
+.prompt {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 90px;
+    color: rgb(89, 86, 86);
+    display: block;
+    cursor: default;
+}
+
+.rounded-line {
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 310px;
+    height: 4px; 
+    background-color: rgb(104, 102, 98); 
+    border-radius: 2px; 
+}
+
+.sidebar {
+    /* overscroll-behavior-y: none; */
+    background-color: rgb(238, 233, 224);
+    outline: 3px solid rgb(104, 102, 98);
+    position: fixed;
+    top: 0;
+    right: -353px;
+    width: 350px;
+    height: 100vh;
+    transition: right 0.4s ease;
+    overflow-y: scroll;
+    padding-bottom: 20px;
+    scrollbar-width: thin; 
+    scrollbar-color: transparent transparent;
+}
+
+.sidebar.active {
+    right: 0; 
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px; 
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.toggle-sidebar-button {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1;
+    cursor: pointer;
+    background-image: url('https://friconix.com/png/fi-xwluxx-three-bars-wide.png'); 
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    padding: 25px;
+    transition: right 0.4s ease, background-color 0.4s; 
+}
+
+.toggle-sidebar-button.active {
+    right: 280px;
+    background-color: rgb(238, 233, 224)
+}
+
+.label {
+    position: absolute;
+    top: 30px; 
+    left: 87px; 
+    margin: 0; 
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 23px;
+    color: rgb(89, 86, 86);
+}
+
+.expanding-div {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 20px;
+    color: rgb(89, 86, 86);
+    line-height: 2.3;
+    padding-bottom: 5px;
+}
+
+.expanding-div .content {
+    line-height: 1;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.not-expanding-div {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 20px;
+    color: rgb(89, 86, 86);
+    padding-bottom: 5px;
+}
+
+/* buttons */
+.but_1, .but_2 {
+    width: 70px;
+    padding: 10px 10px;
+    background-color: #b5838d;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    margin-left: 75px;
+    transition: background-color 0.2s;
+}
+.but_1:hover {
+    background-color: #e5989b;
+}
+.but_2{
+    background-color: #ffb4a2;
+    margin-left: 25px;
+}
+.but_2:hover {
+    background-color: #ffcdb2;
+}
+
+/* sliders */
+/* i referenced the w3 schools tutorial for this one lol */
+.slider2 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider2:hover {
+    opacity: 1;
+  }
+  
+  .slider2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+  .slider2::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+
+/*nice switch taken from https://uiverse.io/RaspberryBee/calm-deer-81, free with MIT license.*/
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(182, 182, 182);
+  transition: .4s;
+  border-radius: 10px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 8px;
+  left: 0.3em;
+  bottom: 0.3em;
+  transform: rotate(270deg);
+  background-color: rgb(255, 255, 255);
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #3aac56;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.5em);
+}
+
+/* number input styling */
+/* style taken from https://uiverse.io/Cybercom682/witty-mouse-32 under free use MIT license */
+.number-control {
+  display: flex;
+  align-items: center;
+}
+
+.number-left::before,
+.number-right::after {
+  content: attr(data-content);
+  background-color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(104, 102, 98);
+  width: 20px;
+  color: rgb(219, 218, 218);
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.number-left::before {
+  content: "-";
+}
+
+.number-right::after {
+  content: "+";
+}
+
+.number-quantity {
+  padding: 0.25rem;
+  border: 0;
+  width: 35px;
+  -moz-appearance: textfield;
+  border-top: 1px solid rgb(104, 102, 98);
+  border-bottom: 1px solid rgb(104, 102, 98);
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.number-left:hover::before,
+.number-right:hover::after {
+  background-color: #666666;
 }
