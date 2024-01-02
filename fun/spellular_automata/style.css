@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(255, 240, 221);
+    background-color: rgb(251, 249, 246);
     margin: 0;
 }
 
@@ -72,7 +72,6 @@ canvas {
 
 .toggle-sidebar-button.active {
     right: 280px;
-    background-color: rgb(238, 233, 224)
 }
 
 .label {
@@ -214,7 +213,7 @@ canvas {
 }
 
 .switch input:checked + .slider {
-  background-color: #3aac56;
+  background-color: #48955b;
 }
 
 .switch input:focus + .slider {

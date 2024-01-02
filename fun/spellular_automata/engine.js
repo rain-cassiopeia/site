@@ -124,7 +124,7 @@ function spawn(parentColor, parentDelta, [px, py]) {
 }
 
 function cycle() {
-    console.log(`${edgeList.length} live edges!`);
+    console.log(`live edges: [${edgeList.length}]`);
     for (let i=0; i<edgeList.length; i++){
         // tick every live edge
         // this handles appending to nextEdgeList and drawing children to offscreenCanvas

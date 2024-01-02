@@ -9,7 +9,6 @@ function syncScroll() {
     var scrollableDiv = document.getElementById('bar');
     var syncedDiv = document.querySelector('.toggle-sidebar-button');
     syncedDiv.style.top = String(15 - Number(scrollableDiv.scrollTop)) + 'px';
-    console.log("hi")
 }
 
 function hexToRgb(hex) {
@@ -66,6 +65,19 @@ document.getElementById('switch3').addEventListener('change', function() {
     switch_3_state = !switch_3_state;
     //TOGGLE COLOR WRAPPING HERE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     COLORWRAPPING = switch_3_state;
+});
+
+document.getElementById('switch4').addEventListener('change', function() {
+    DARKMODE = !DARKMODE;
+    if (DARKMODE) {
+        document.querySelector('body').style.backgroundColor = 'rgb(33,32,31)';
+        document.querySelector('.sidebar').style.backgroundColor = 'rgb(33,32,31)';
+    }
+    else {
+        document.querySelector('body').style.backgroundColor = 'rgb(251, 249, 246)';
+        document.querySelector('.sidebar').style.backgroundColor = 'rgb(238, 233, 224)';
+    }
+
 });
 // buttons ------------
 //RUN = false; //run during manual mode here >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -39,3 +39,6 @@ START_B = 250
 // automatic mode
 AUTO_MODE = true 
 RUN = false
+
+// this is so stupid
+DARKMODE = false
