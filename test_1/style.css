@@ -25,6 +25,7 @@ body {
 }
 
 .sidebar {
+    /* overscroll-behavior-y: none; */
     background-color: rgb(238, 233, 224);
     outline: 3px solid rgb(104, 102, 98);
     position: fixed;

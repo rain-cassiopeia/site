@@ -5,6 +5,13 @@ function toggleSidebar() {
     button.classList.toggle('active');
 }
 
+function syncScroll() {
+    var scrollableDiv = document.getElementById('bar');
+    var syncedDiv = document.querySelector('.toggle-sidebar-button');
+    syncedDiv.style.top = String(15 - Number(scrollableDiv.scrollTop)) + 'px';
+    console.log("hi")
+}
+
 // switches -------------
 switch_1_state = true;
 document.getElementById('switch1').addEventListener('change', function() {
