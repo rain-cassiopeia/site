@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testing for spellular automata</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+
+    <!--  content below -->
+    <p class="prompt">click anywhere</p>
+
+    <button class="toggle-sidebar-button" onclick="toggleSidebar()"></button>
+
+    <div class="sidebar" id="bar" >
+
+        <p class="label">generation settings</p>
+
+        <br><br><br><br>
+
+        <div class="rounded-line"></div>
+
+        <!-- automatic mode -->
+        <div class="expanding-div">
+            <label class="switch" id="switch1">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+            &nbsp;&nbsp;automatic mode
+            <div class="content" id="content1">
+                <button id="but_1" class="but_1" onclick="but_1()">run</button>
+                <button id="but_2" class="but_2" onclick="but_2()">clear</button>
+            </div>
+        </div>
+
+        <div class="rounded-line"></div>
+
+        <!-- random starting color -->
+        <div class="expanding-div">
+            <label class="switch" id="switch2">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+            &nbsp;&nbsp;random starting color
+            <div class="content" id="content2">
+                <label for="inputColor">color picker:&nbsp;</label>
+                <input type="color" id="inputColor">
+            </div>
+        </div>
+
+        <div class="rounded-line"></div>
+        
+        <!-- do color wrapping -->
+        <!-- this doesnt need to be an expanding div, i made it one for convenience -->
+        <div class="expanding-div">
+            <label class="switch" id="switch3">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            &nbsp;&nbsp;do color wrapping
+        </div>
+
+        <div class="rounded-line"></div>
+
+        <!-- probability of mutation -->
+        <div class="not-expanding-div">
+            <p>probability of mutation: <span id="slider_1_output"></span></p>
+            <input type="range" min="0" max="100" value="67" class="slider2" id="slider_1">
+
+            <div style="display: flex; align-items: center; margin-top: 15px;">
+                <div style="width: 180px; margin-left: 20px">red: <span id="slider_2_output"></span></div>
+                <input type="range" min="0" max="100" value="100" class="slider2" id="slider_2">
+            </div>
+
+            <div style="display: flex; align-items: center; margin-top: 15px;">
+                <div style="width: 180px; margin-left: 20px">green: <span id="slider_3_output"></span></div>
+                <input type="range" min="0" max="100" value="100" class="slider2" id="slider_3">
+            </div>
+
+            <div style="display: flex; align-items: center; margin-top: 15px;">
+                <div style="width: 180px; margin-left: 20px">blue: <span id="slider_4_output"></span></div>
+                <input type="range" min="0" max="100" value="100" class="slider2" id="slider_4">
+            </div>
+        </div>
+
+        <div class="rounded-line"></div>
+
+        <!-- mutation range -->
+        <!-- ids i1 through i6 correspond to values of each field -->
+        <div class='not-expanding-div'>
+            mutation range
+
+            <div class="number-control" style="margin-top:10px">
+                <div style="width: 200px">
+                    &nbsp;red incriment:
+                </div>
+                <div onclick = "rupdown()" class="number-left"></div>
+                <input type="number" name="number" class="number-quantity" value="8" id="i1" oninput="update_rup()">
+                <div onclick = "rupup()" class="number-right"></div>
+            </div>
+
+            <div class="number-control" style="margin-top:10px">
+                <div style="width: 200px">
+                    &nbsp;red decriment:
+                </div>
+                <div onclick = "rdowndown()" class="number-left"></div>
+                <input type="number" name="number" class="number-quantity" value="8" id="i2" oninput="update_rdown()">
+                <div onclick = "rdownup()" class="number-right"></div>
+            </div>
+
+            <div class="number-control" style="margin-top:10px">
+                <div style="width: 200px">
+                    &nbsp;green incriment:
+                </div>
+                <div onclick="gupdown()" class="number-left"></div>
+                <input type="number" name="number" class="number-quantity" value="8" id="i3" oninput="update_gup()">
+                <div onclick="gupup()"class="number-right"></div>
+            </div>
+
+            <div class="number-control" style="margin-top:10px">
+                <div style="width: 200px">
+                    &nbsp;green decriment:
+                </div>
+                <div onclick="gdowndown()"class="number-left"></div>
+                <input type="number" name="number" class="number-quantity" value="8" id="i4" oninput="update_gdown()">
+                <div onclick="gdownup()"class="number-right"></div>
+            </div>
+
+            <div class="number-control" style="margin-top:10px">
+                <div style="width: 200px">
+                    &nbsp;blue incriment:
+                </div>
+                <div onclick="bupdown()" class="number-left"></div>
+                <input type="number" name="number" class="number-quantity" value="8" id="i5" oninput="update_bup()">
+                <div onclick="bupup()" class="number-right"></div>
+            </div>
+
+            <div class="number-control" style="margin-top:10px">
+                <div style="width: 200px">
+                    &nbsp;blue decriment:
+                </div>
+                <div onclick="bdowndown()" class="number-left"></div>
+                <input type="number" name="number" class="number-quantity" value="8" id="i6" oninput="update_bdown()">
+                <div onclick="bdownup()" class="number-right"></div>
+            </div>
+        </div>
+
+        <div class="rounded-line"></div>
+
+    </div>
+
+    <!-- content above -->
+
+    <script src="script.js"></script>
+</body>
+</html>
