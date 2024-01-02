@@ -129,9 +129,9 @@ var slider_4 = document.getElementById("slider_4");
 var slider_4_output = document.getElementById("slider_4_output");
 slider_4_output.innerHTML = slider_4.value;
 slider_4.oninput = function() {
-  slider_4_output.innerHTML = this.value/100 ;
+  slider_4_output.innerHTML = this.value;
   // SET PROBABILITY OF BLUE MUTATION HERE >>???>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  B_ODDS = this.value;
+  B_ODDS = this.value/100;
   //reference it using this.value
 }
 
