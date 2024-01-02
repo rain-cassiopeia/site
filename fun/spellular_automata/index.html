@@ -155,6 +155,31 @@
 
         <div class="rounded-line"></div>
 
+        <div class="not-expanding-div" style="font-size: 23px;">
+            about this project
+        </div>
+
+        <div class="not-expanding-div" style="font-size: 15px; margin-left: 25px; margin-top: 8px">
+            this was inspired by the huegene cellular automata, which was popularized 
+            by TodePond. <br>huegene consists of two types of cells; plants and herbavores.
+            in each generation, plant cells have a 2/3 chance of choosing a random empty
+            adjacent cell and duplicating themselves into it. with each duplication, 
+            their color mutates slightly. <br>in this remake, i recreated the plant cells only, 
+            and added some more configuration options. now we can control the probability of 
+            mutation for each r, g, and b value, as well as the upper and lower bounds on each 
+            mutation. a new effect is achieved by allowing color wrapping, which occurs when 
+            colors mutate to values greater than 255 or less than 0  are allowed to wrap around 
+            to the opposite extreme instead of being capped. 
+            <br>finally, a subtle but powerful modification was the creation of a delta variable, 
+            also inhereited by cells from their parents, which controls the probability of 
+            replication to begin with. delta also mutates over time, but but the pseudo-random 
+            chances of mutation are mapped to a sine function before being applied to the cells, 
+            as opposed to the direct linear correspondence we see in the color mutation function.
+            this makes for slightly smoother and more interesting patterns in my opinion :)
+        </div>
+
+        <div class="rounded-line"></div>
+
     </div>
 
     <!-- content above -->
