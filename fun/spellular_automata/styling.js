@@ -157,8 +157,12 @@ function bdowndown() {document.getElementById("i6").value = String(Math.abs(Numb
 
 
 
-document.addEventListener("click", onClick)
-function onClick() {
-    const prompt = document.querySelector('.prompt');
-    prompt.style.display = "none";
+document.addEventListener("click", onClickPrompt)
+function onClickPrompt() {
+    var clickedElement = event.target;
+    var isExcluded = clickedElement.closest('.sidebar') !== null || clickedElement.closest('.toggle-sidebar-button') !== null;
+    if (!isExcluded) {
+        const prompt = document.querySelector('.prompt');
+        prompt.style.display = "none";
+    }
 }
