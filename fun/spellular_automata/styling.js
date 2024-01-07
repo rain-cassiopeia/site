@@ -178,3 +178,12 @@ function onClickPrompt() {
         prompt.style.display = "none";
     }
 }
+
+
+
+function downloadCanvas() {
+    var link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'cool_image.png';
+    link.click();
+}

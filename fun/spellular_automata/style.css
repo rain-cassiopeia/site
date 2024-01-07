@@ -74,6 +74,19 @@ canvas {
     right: 280px;
 }
 
+.gif-button {
+    display: inline-block;
+    padding: 40px 40px;
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNhMTQ2MjYzcWhpNDFtcW52eDdtbXF3YTBlNWEzejF3OXpnYm95cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kravBhdlxib6MFBBJU/giphy.gif'); 
+    background-size: cover;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px; 
+    left: 20px;
+    background-color: rgba(89, 86, 86, 0.3);
+}
+
 .label {
     position: absolute;
     top: 30px; 
@@ -112,7 +125,7 @@ canvas {
 }
 
 /* buttons */
-.but_1, .but_2 {
+.but_1, .but_2, .but_3 {
     width: 70px;
     padding: 10px 10px;
     background-color: #b5838d;
@@ -134,6 +147,11 @@ canvas {
 }
 .but_2:hover {
     background-color: #ffcdb2;
+}
+.but_3{
+  width: 180px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 /* sliders */
