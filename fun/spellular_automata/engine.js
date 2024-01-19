@@ -132,7 +132,6 @@ function cycle() {
     }
     edgeList = nextEdgeList;
     nextEdgeList = [];
-    
 }
 
 function onClick(event) {
@@ -187,7 +186,9 @@ function animate() {
     if (AUTO_MODE) {cycle()}
     else if (RUN) {cycle()}
     ctx.drawImage(offscreenCanvas, 0, 0);
-    requestAnimationFrame(animate);
+    setTimeout(function() { //not sure if this is the most efficient way to do this...
+        requestAnimationFrame(animate);
+    }, DELAY);
 }
 
 setupCanvas();

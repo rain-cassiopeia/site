@@ -95,6 +95,14 @@ function but_2() {
     clearCanvas();
 }
 // sliders ----------
+var slider_0 = document.getElementById("slider_0");
+var slider_0_output = document.getElementById("slider_0_output");
+slider_0_output.innerHTML = slider_0.value;
+slider_0.oninput = function() {
+  slider_0_output.innerHTML = this.value;
+  DELAY = 100-this.value;
+}
+
 var slider_1 = document.getElementById("slider_1");
 var slider_1_output = document.getElementById("slider_1_output");
 slider_1_output.innerHTML = slider_1.value;

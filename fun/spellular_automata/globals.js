@@ -42,3 +42,9 @@ RUN = false
 
 // this is so stupid
 DARKMODE = false
+
+// delay goes up to 100, slows down propagation
+DELAY = 0
+
+//time, actually the number of cycles we have ATTEMPTED
+T = 0
