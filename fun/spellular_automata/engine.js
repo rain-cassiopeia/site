@@ -11,18 +11,20 @@ const offscreenCanvas = document.createElement('canvas');
 const offscreenCtx = offscreenCanvas.getContext('2d');
 
 class Pixel {
-    constructor(x, y, living) {
+    constructor(x, y, living, generation) {
         //x and y are NOT window coordinates, they are pixel coordinates!! 
         //living is bool
         this.x = x;
         this.y = y;
         this.alive = living;
+        this.generation = generation;
     }
 }
 class Edge extends Pixel{
-    constructor(x, y, color, delta) {
+    constructor(x, y, color, delta, generation) {
         //color is list of r, g, b.
         super(x, y);
+        this.generation = generation;
         this.alive = true;
         this.color = color;
         this.delta = delta
@@ -30,20 +32,25 @@ class Edge extends Pixel{
         this.real_x = 2 * this.x;
         this.real_y = 2 * this.y;
     }
-    getFriends() { // all my neighbors are my friends :D
+    getFriends(pgen) { // all my neighbors are my friends :D
         //returns list of lists of coordinates of living neighbors
         //currently not doing wraparound. might add later
         let friendList = [];
-        if (this.x > 0 && !pixList[(this.x - 1) + (pixX * this.y)].alive) { //left
+        let left = pixList[(this.x - 1) + (pixX * this.y)];
+        let right = pixList[(this.x + 1) + (pixX * this.y)];
+        let top = pixList[this.x + (pixX * (this.y - 1))];
+        let bottom = pixList[this.x + (pixX * (this.y + 1))];
+
+        if (this.x > 0 && (!left.alive || (left.generation < pgen))) { //left
             friendList.push([this.x - 1, this.y]);
         }
-        if (this.x < (pixX - 1) && !pixList[(this.x + 1) + (pixX * this.y)].alive) { //right
+        if (this.x < (pixX - 1) && (!right.alive || (right.generation < pgen))) { //right
             friendList.push([this.x + 1, this.y]);
         }
-        if (this.y > 0 && !pixList[this.x + (pixX * (this.y - 1))].alive) { //top
+        if (this.y > 0 && (!top.alive || (top.generation < pgen))) { //top
             friendList.push([this.x, this.y - 1]);
         }
-        if (this.y < (pixY - 1) && !pixList[this.x + (pixX * (this.y + 1))].alive) { //bottom
+        if (this.y < (pixY - 1) && (!bottom.alive || (bottom.generation < pgen))) { //bottom
             friendList.push([this.x, this.y + 1]);
         }
         return friendList;
@@ -53,16 +60,16 @@ class Edge extends Pixel{
         if (Math.random() < (this.delta)) {
             tweak = true;
         }
-        let friends = this.getFriends()
+        let friends = this.getFriends(this.generation)
         let numfriends = friends.length;
         if (numfriends > 1) {
             nextEdgeList.push(this); // this could only be a live edge next round if dead neighbors > 2
             if (tweak) {
-                spawn(this.color, this.delta, friends[Math.floor(Math.random() * numfriends)])
+                spawn(this.generation, this.color, this.delta, friends[Math.floor(Math.random() * numfriends)])
             }
         }
         else if (numfriends == 1) {
-            if (tweak) {spawn(this.color, this.delta, friends[0])}
+            if (tweak) {spawn(this.generation, this.color, this.delta, friends[0])}
             else {nextEdgeList.push(this)}
         }
     }
@@ -112,12 +119,13 @@ function mutateDelta(delta) {
     return delta;
 }
 
-function spawn(parentColor, parentDelta, [px, py]) {
+function spawn(parentGeneration, parentColor, parentDelta, [px, py]) {
     // console.log(px);
     // console.log(py);
     pixList[px + (pixX * py)].alive = true; 
+    pixList[px + (pixX * py)].generation = parentGeneration; 
     let newColor = mutateColor(parentColor);
-    let newPixel = new Edge(px, py, newColor, mutateDelta(parentDelta));
+    let newPixel = new Edge(px, py, newColor, mutateDelta(parentDelta), parentGeneration);
     nextEdgeList.push(newPixel); // im assuming it would be quicker to do this without checking but idk
     offscreenCtx.fillStyle = `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`;
     offscreenCtx.fillRect(newPixel.real_x, newPixel.real_y, 2, 2); // 2x2!
@@ -125,6 +133,8 @@ function spawn(parentColor, parentDelta, [px, py]) {
 
 function cycle() {
     console.log(`live edges: [${edgeList.length}]`);
+    console.log(`generation: [${GENERATION}]`);
+    if (edgeList.length > 1) {console.log(`DATA: [${edgeList[edgeList.length-1].generation}]`);}
     for (let i=0; i<edgeList.length; i++){
         // tick every live edge
         // this handles appending to nextEdgeList and drawing children to offscreenCanvas
@@ -138,6 +148,7 @@ function onClick(event) {
     var clickedElement = event.target;
     var isExcluded = clickedElement.closest('.sidebar') !== null || clickedElement.closest('.toggle-sidebar-button') !== null;
     if (!isExcluded) {
+        GENERATION += 1;
         if (AUTO_MODE){
             setupCanvas()
             nextEdgeList = [];
@@ -149,7 +160,7 @@ function onClick(event) {
         if (RAND_COLOR) {
             startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
         }
-        spawn(startingColor, 0.67, [clickX, clickY]); // tweak with starting color?
+        spawn(GENERATION, startingColor, 0.67, [clickX, clickY]); // tweak with starting color?
     }
 }
 
@@ -177,7 +188,7 @@ function setupCanvas(){
     pixList = [];
     for (let i=0; i<pixY; i++) { 
         for (let j=0; j<pixX; j++) {
-            pixList.push(new Pixel(j, i, false));
+            pixList.push(new Pixel(j, i, false, GENERATION));
         }
     }
 }

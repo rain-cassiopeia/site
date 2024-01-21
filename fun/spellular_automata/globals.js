@@ -45,3 +45,6 @@ DARKMODE = false
 
 // delay goes up to 100, slows down propagation
 DELAY = 0
+
+//for experimental mode, this represents which click we are on
+GENERATION = 0
