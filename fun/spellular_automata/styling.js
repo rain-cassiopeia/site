@@ -24,14 +24,8 @@ function hexToRgb(hex) {
 switch_1_state = true;
 document.getElementById('switch1').addEventListener('change', function() {
     switch_1_state = !switch_1_state;
-    //TOGGLE AUTOMATIC MODE HERE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    AUTO_MODE = switch_1_state;
-    if (switch_1_state) {
-        document.getElementById('content1').style.maxHeight = '0px';
-        //RUN = true; // THIS NEEDS TO BE CHANGED WHEN TEMPGLOBAL IS CHANGED
-    } else {
-        document.getElementById('content1').style.maxHeight = '45px';
-    }
+    //TOGGLE COLOR WRAPPING HERE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    OVERLAP = switch_1_state;
 });
 
 switch_2_state = true;

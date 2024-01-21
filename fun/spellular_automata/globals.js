@@ -37,8 +37,7 @@ START_G = 250
 START_B = 250
 
 // automatic mode
-AUTO_MODE = true 
-RUN = false
+RUN = true
 
 // this is so stupid
 DARKMODE = false
@@ -46,5 +45,7 @@ DARKMODE = false
 // delay goes up to 100, slows down propagation
 DELAY = 0
 
-//for experimental mode, this represents which click we are on
+//overlap toggle. generation represents which click we are on
+OVERLAP = true
 GENERATION = 0
+

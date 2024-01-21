@@ -148,12 +148,8 @@ function onClick(event) {
     var clickedElement = event.target;
     var isExcluded = clickedElement.closest('.sidebar') !== null || clickedElement.closest('.toggle-sidebar-button') !== null;
     if (!isExcluded) {
-        GENERATION += 1;
-        if (AUTO_MODE){
-            setupCanvas()
-            nextEdgeList = [];
-            edgeList = [];
-        }
+        if (OVERLAP) {GENERATION += 1;}
+        //used to call clear canvas here, think we outgrew that?
         let clickX = Math.floor(event.clientX / 2); // divide by 2 for 2x2 grid!
         let clickY = Math.floor(event.clientY / 2);
         let startingColor = [START_R, START_G, START_B];
@@ -194,8 +190,7 @@ function setupCanvas(){
 }
 
 function animate() {
-    if (AUTO_MODE) {cycle()}
-    else if (RUN) {cycle()}
+    if (RUN) {cycle()}
     ctx.drawImage(offscreenCanvas, 0, 0);
     setTimeout(function() { //not sure if this is the most efficient way to do this...
         requestAnimationFrame(animate);
