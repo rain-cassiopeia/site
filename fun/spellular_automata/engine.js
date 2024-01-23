@@ -172,7 +172,7 @@ function doWindowSize() {
     winX = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     winY = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     pixX = Math.floor(winX / 2); // 2x2 pixels 
-    pixY = Math.floor(winY / 2);
+    pixY = Math.floor(winY / 2); //unclear as to why this was necessary, but i was getting floats
 }
 function setupCanvas(){
     doWindowSize()
