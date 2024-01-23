@@ -132,8 +132,10 @@ function spawn(parentGeneration, parentColor, parentDelta, [px, py]) {
 }
 
 function cycle() {
-    console.log(`live edges: [${edgeList.length}]`);
-    console.log(`generation: [${GENERATION}]`);
+    if (DEBUG) {
+        console.log(`live edges: [${edgeList.length}]`);
+        console.log(`generation: [${GENERATION}]`);
+    }
     if (edgeList.length > 1) {console.log(`DATA: [${edgeList[edgeList.length-1].generation}]`);}
     for (let i=0; i<edgeList.length; i++){
         // tick every live edge
@@ -169,8 +171,8 @@ function clearCanvas(){
 function doWindowSize() {
     winX = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     winY = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    pixX = winX / 2; // 2x2 pixels 
-    pixY = winY / 2;
+    pixX = Math.floor(winX / 2); // 2x2 pixels 
+    pixY = Math.floor(winY / 2);
 }
 function setupCanvas(){
     doWindowSize()

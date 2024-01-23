@@ -49,3 +49,6 @@ DELAY = 0
 OVERLAP = true
 GENERATION = 0
 
+//debug
+DEBUG = false
+
