@@ -2,6 +2,8 @@ winX = 0; // window width
 winY = 0; // window height
 pixX = 0; // number of pixels wide 
 pixY = 0; // number of pixels tall
+mouseX = 0; // literal coords
+mouseY = 0; // it sure is
 pixList = []; // all pixels, live updated
 edgeList = []; // live edges, updated once per cycle
 nextEdgeList = []; // next cycle's live edges, accumulating
@@ -140,25 +142,41 @@ function cycle() {
     for (let i=0; i<edgeList.length; i++){
         // tick every live edge
         // this handles appending to nextEdgeList and drawing children to offscreenCanvas
-        edgeList[i].tick(); 
+        edgeList[i].tick();
     }
     edgeList = nextEdgeList;
     nextEdgeList = [];
+    //mousehold mode stuffs
+    if (MOUSEHOLD) {
+        if (MOUSEISPRESSED) {
+            if (mouseX <= winX && mouseY <= winY) {
+                let currx = Math.abs(Math.floor(mouseX / 2)); // divide by 2 for 2x2 grid!
+                let curry = Math.abs(Math.floor(mouseY / 2));
+                let startingColor = [START_R, START_G, START_B];
+                if (RAND_COLOR) {
+                    startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+                }
+                spawn(GENERATION, startingColor, 0.67, [currx, curry]); // tweak with starting color?
+            }
+        }
+    }
 }
 
 function onClick(event) {
-    var clickedElement = event.target;
-    var isExcluded = clickedElement.closest('.sidebar') !== null || clickedElement.closest('.toggle-sidebar-button') !== null;
-    if (!isExcluded) {
-        if (OVERLAP) {GENERATION += 1;}
-        //used to call clear canvas here, think we outgrew that?
-        let clickX = Math.floor(event.clientX / 2); // divide by 2 for 2x2 grid!
-        let clickY = Math.floor(event.clientY / 2);
-        let startingColor = [START_R, START_G, START_B];
-        if (RAND_COLOR) {
-            startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+    if (!MOUSEHOLD) { //we only do mouseclick if we're not in mousehold mode. there are cleaner ways to do this.
+        var clickedElement = event.target;
+        var isExcluded = clickedElement.closest('.sidebar') !== null || clickedElement.closest('.toggle-sidebar-button') !== null;
+        if (!isExcluded) {
+            if (OVERLAP) {GENERATION += 1;}
+            //used to call clear canvas here, think we outgrew that?
+            let clickX = Math.floor(mouseX / 2); // divide by 2 for 2x2 grid!
+            let clickY = Math.floor(mouseY / 2);
+            let startingColor = [START_R, START_G, START_B];
+            if (RAND_COLOR) {
+                startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+            }
+            spawn(GENERATION, startingColor, 0.67, [clickX, clickY]); // tweak with starting color?
         }
-        spawn(GENERATION, startingColor, 0.67, [clickX, clickY]); // tweak with starting color?
     }
 }
 
@@ -199,6 +217,19 @@ function animate() {
     }, DELAY);
 }
 
+function mousedown() {
+    if (OVERLAP) {GENERATION += 1;}
+    MOUSEISPRESSED = true
+}
+
+function updatemouselocation(event) {
+     mouseX = event.clientX;
+     mouseY = event.clientY;
+}
+
 setupCanvas();
 animate();
 document.addEventListener("click", onClick)
+document.addEventListener('mousemove', updatemouselocation);
+document.getElementById("canvas").onmousedown = function() {mousedown()} ;
+document.getElementById("canvas").onmouseup = () => MOUSEISPRESSED = false;

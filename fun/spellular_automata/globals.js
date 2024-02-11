@@ -52,3 +52,10 @@ GENERATION = 0
 //debug
 DEBUG = false
 
+//mousehold mode ugh 
+MOUSEHOLD = false
+
+
+//this feels like a silly thing to have a global variable for
+MOUSEISPRESSED = false
+

@@ -73,6 +73,11 @@ document.getElementById('switch4').addEventListener('change', function() {
     }
 
 });
+
+document.getElementById('switch5').addEventListener('change', function() {
+    MOUSEHOLD = !MOUSEHOLD;
+});
+
 // buttons ------------
 //RUN = false; //run during manual mode here >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function but_1() {
