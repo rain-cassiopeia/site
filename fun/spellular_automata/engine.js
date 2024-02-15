@@ -1,3 +1,17 @@
+/*
+Notes on the structure of the generating engine--
+
+pixList stores every pixel in the canvas, knowing its position, whether it is alive, and its generation
+    generation corrisponds to which mouseclick generated the pixels, allows for overlap/non overlap in pixels.
+    when the screen is wiped, pixlist resets.
+edgeList contains live updating edges. edges also know their color, delta (chances of replication), and actual position on the canvas.
+    once edges are fully surrounded by live cells, they are removed from the edgelist, since there is no longer a chance of replication.
+
+when in single click mode, clicking the mouse on the canvas triggers onclick, which adds the clicked pixel to edgelist.
+requestanimationframe runs animate, which in mouse drag mode also spawns live edges when mouse is dragged.
+additionally it calls cycle, which updates every live edge.
+*/
+
 winX = 0; // window width
 winY = 0; // window height
 pixX = 0; // number of pixels wide 
