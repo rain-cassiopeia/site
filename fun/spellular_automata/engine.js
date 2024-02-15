@@ -146,20 +146,6 @@ function cycle() {
     }
     edgeList = nextEdgeList;
     nextEdgeList = [];
-    //mousehold mode stuffs
-    if (MOUSEHOLD) {
-        if (MOUSEISPRESSED) {
-            if (mouseX <= winX && mouseY <= winY) {
-                let currx = Math.abs(Math.floor(mouseX / 2)); // divide by 2 for 2x2 grid!
-                let curry = Math.abs(Math.floor(mouseY / 2));
-                let startingColor = [START_R, START_G, START_B];
-                if (RAND_COLOR) {
-                    startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
-                }
-                spawn(GENERATION, startingColor, 0.67, [currx, curry]); // tweak with starting color?
-            }
-        }
-    }
 }
 
 function onClick(event) {
@@ -211,6 +197,22 @@ function setupCanvas(){
 
 function animate() {
     if (RUN) {cycle()}
+
+    //mousehold mode stuffs
+    if (MOUSEHOLD) {
+        if (MOUSEISPRESSED) {
+            if (mouseX <= winX && mouseY <= winY) {
+                let currx = Math.abs(Math.floor(mouseX / 2)); // divide by 2 for 2x2 grid!
+                let curry = Math.abs(Math.floor(mouseY / 2));
+                let startingColor = [START_R, START_G, START_B];
+                if (RAND_COLOR) {
+                    startingColor = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+                }
+                spawn(GENERATION, startingColor, 0.67, [currx, curry]); // tweak with starting color?
+            }
+        }
+    }
+
     ctx.drawImage(offscreenCanvas, 0, 0);
     setTimeout(function() { //not sure if this is the most efficient way to do this...
         requestAnimationFrame(animate);
