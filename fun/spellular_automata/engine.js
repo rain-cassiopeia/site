@@ -101,7 +101,7 @@ function mutateColor(color) { // lots of ways to do this!! TODO: tweak :p
         else {
             newColor[0] = (newColor[0] - Math.floor(Math.random()*R_DOWN));
         }
-        if (COLORWRAPPING) {newColor[0] = newColor[0] % 256}
+        if (COLORWRAPPING) {newColor[0] = mod(newColor[0], 256)}
     }
     if(Math.random() < G_ODDS) {
         if (Math.random() < 0.5) {
@@ -110,7 +110,7 @@ function mutateColor(color) { // lots of ways to do this!! TODO: tweak :p
         else {
             newColor[1] = (newColor[1] - Math.floor(Math.random()*G_DOWN));
         }
-        if (COLORWRAPPING) {newColor[1] = newColor[1] % 256}
+        if (COLORWRAPPING) {newColor[1] = mod(newColor[1], 256)}
     }
     if(Math.random() < B_ODDS) {
         if (Math.random() < 0.5) {
@@ -119,7 +119,7 @@ function mutateColor(color) { // lots of ways to do this!! TODO: tweak :p
         else {
             newColor[2] = (newColor[2] - Math.floor(Math.random()*B_DOWN));
         }
-        if (COLORWRAPPING) {newColor[2] = newColor[2] % 256}
+        if (COLORWRAPPING) {newColor[2] = mod(newColor[2], 256)}
     }
     return newColor;
 }
@@ -142,6 +142,7 @@ function spawn(parentGeneration, parentColor, parentDelta, [px, py]) {
     pixList[px + (pixX * py)].generation = parentGeneration; 
     let newColor = mutateColor(parentColor);
     let newPixel = new Edge(px, py, newColor, mutateDelta(parentDelta), parentGeneration);
+    console.log(newColor[0]);
     nextEdgeList.push(newPixel); // im assuming it would be quicker to do this without checking but idk
     offscreenCtx.fillStyle = `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`;
     offscreenCtx.fillRect(newPixel.real_x, newPixel.real_y, 2, 2); // 2x2!
@@ -242,6 +243,11 @@ function updatemouselocation(event) {
      mouseX = event.clientX;
      mouseY = event.clientY;
 }
+
+//terrible that this is necessary lol
+function mod(n, m) {
+    return ((n % m) + m) % m;
+  }
 
 setupCanvas();
 animate();
