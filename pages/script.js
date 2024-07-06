@@ -53,6 +53,6 @@ const debounce = (func, delay) => {
 
 const debouncedSave = debounce(save, debounceDelay);
 
-const notesTextarea = document.getElementById('notes');
-notesTextarea.addEventListener('input', debouncedSave);
-notesTextarea.addEventListener('keyup', debouncedSave);
+const textarea = document.getElementById('page');
+textarea.addEventListener('input', debouncedSave);
+textarea.addEventListener('keyup', debouncedSave);
