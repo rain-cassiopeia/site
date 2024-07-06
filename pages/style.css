@@ -1,0 +1,6 @@
+#icon {
+  width: 200px;
+  height: 100px;
+  background-color: lightgreen;
+  display: none; /* Initially hidden */
+}
