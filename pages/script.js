@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 // Load database
-const docRef = db.collection('page').doc('personal');
+const docRef = db.collection('pages').doc('test');
 docRef.get().then((doc) => {
   if (doc.exists) {
     document.getElementById('page').value = doc.data().content;
