@@ -14,11 +14,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Load saved notes
-const docRef = db.collection('notes').doc('personal');
+// Load database
+const docRef = db.collection('page').doc('personal');
 docRef.get().then((doc) => {
   if (doc.exists) {
-    document.getElementById('notes').value = doc.data().content;
+    document.getElementById('page').value = doc.data().content;
   }
 });
 
@@ -36,7 +36,7 @@ const debounceDelay = 1000; // Delay in milliseconds
 const save = (event) => {
   console.log('Text changed: ', event.target.value);
   docRef.set({
-    content: document.getElementById('notes').value
+    content: document.getElementById('page').value
   });
 };
 
