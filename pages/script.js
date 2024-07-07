@@ -18,7 +18,7 @@ const db = firebase.firestore();
 const docRef = db.collection('pages').doc('test');
 docRef.get().then((doc) => {
   if (doc.exists) {
-    document.getElementById('page').value = doc.data().content;
+    document.getElementById('page').innerText = doc.data().content;
   }
 });
 
@@ -27,16 +27,16 @@ function showsav() {
 }
 
 function hidesav() {
-  document.getElementById('ivon').style.display = 'none';
+  document.getElementById('icon').style.display = 'none';
 }
 
 let debounceTimer;
 const debounceDelay = 1000; // Delay in milliseconds
 
 const save = (event) => {
-  console.log('Text changed: ', event.target.value);
+  console.log('Text changed: ', event.target.innerText);
   docRef.set({
-    content: document.getElementById('page').value
+    content: document.getElementById('page').innerText
   });
 };
 
