@@ -43,9 +43,11 @@ const save = (event) => {
 const debounce = (func, delay) => {
   return function(event) {
     clearTimeout(debounceTimer);
+    // Hide the saved icon
     document.getElementById('icon').style.display = 'none';
     debounceTimer = setTimeout(() => {
         func(event);
+        // Show the saved icon
         document.getElementById('icon').style.display = 'block';
     }, delay);
   };
