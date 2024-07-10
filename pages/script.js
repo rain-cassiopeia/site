@@ -44,11 +44,11 @@ const debounce = (func, delay) => {
   return function(event) {
     clearTimeout(debounceTimer);
     // Hide the saved icon
-    document.getElementById('icon').style.display = 'none';
+    document.getElementById('icon').style.opacity = 0;
     debounceTimer = setTimeout(() => {
         func(event);
         // Show the saved icon
-        document.getElementById('icon').style.display = 'block';
+        document.getElementById('icon').style.opacity = 0.75;
     }, delay);
   };
 };
