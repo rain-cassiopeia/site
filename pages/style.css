@@ -77,17 +77,19 @@ html {
   background-color: rgb(0, 4, 8);
   border-radius: 15px;
   position: sticky;
+  display: flex;
+  justify-content: center;
 }
 
 .scroll-up {
-    margin: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .scroll-up:hover {
@@ -97,18 +99,21 @@ html {
 .scroll-down {
     margin: 20px;
     margin-top: 90vh;
-    padding: 10px 20px;
+    padding: 8px 12px;
     font-size: 18px;
-    background-color: #007BFF;
-    color: white;
+    font-weight: 500;
+    font-family: Gill Sans, sans-serif;
+    background-color: rgba(80,80,80,0.4);
+    color: rgb(216, 217, 210);
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     position: fixed;
 }
 
 .scroll-down:hover {
-    background-color: #0056b3;
+    background-color: rgba(80,80,80,0.7);
+    color: rgb(167, 168, 162);
 }
 
 
