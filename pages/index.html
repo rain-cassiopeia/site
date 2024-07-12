@@ -11,12 +11,18 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
 <body>
-  <div class="parent">
+  <div class="parent" id = "p1">
     <div contenteditable="true" id="page"> </div>
     <div id="icon">
       <img src="floppy.png">
       saved
     </div>
+    <button class="scroll-down" id = "hideme" onclick="scrollToSection('p2')">Scroll Down</button>
+  </div>
+
+  <div class="menu" id="p2">
+    <button class="scroll-up" onclick="scrollToSection('p1')">Scroll Up</button>
+    testing
   </div>
 
   <a href="/" class="gif-button"></a>

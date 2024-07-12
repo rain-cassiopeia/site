@@ -58,3 +58,20 @@ const debouncedSave = debounce(save, debounceDelay);
 const textarea = document.getElementById('page');
 textarea.addEventListener('input', debouncedSave);
 textarea.addEventListener('keyup', debouncedSave);
+
+
+
+
+//button to scroll
+function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', function() {
+  const but = document.getElementById('hideme');
+  if (window.scrollY > 60) {
+      but.style.opacity = '0';
+  } else {
+      but.style.opacity = '1';
+  }
+});
