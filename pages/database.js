@@ -18,7 +18,7 @@ const db = firebase.firestore();
 const docRef = db.collection('pages').doc('test');
 docRef.get().then((doc) => {
   if (doc.exists) {
-    document.getElementById('page').innerText = doc.data().content;
+    document.getElementById('page').innerHTML = doc.data().content;
   }
 });
 
@@ -34,9 +34,9 @@ let debounceTimer;
 const debounceDelay = 1000; // Delay in milliseconds
 
 const save = (event) => {
-  console.log('Text changed: ', event.target.innerText);
+  console.log('Text changed: ', event.target.innerHTML);
   docRef.set({
-    content: document.getElementById('page').innerText
+    content: document.getElementById('page').innerHTML
   });
 };
 
@@ -58,20 +58,3 @@ const debouncedSave = debounce(save, debounceDelay);
 const textarea = document.getElementById('page');
 textarea.addEventListener('input', debouncedSave);
 textarea.addEventListener('keyup', debouncedSave);
-
-
-
-
-//button to scroll
-function scrollToSection(sectionId) {
-    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-}
-
-window.addEventListener('scroll', function() {
-  const but = document.getElementById('hideme');
-  if (window.scrollY > 60) {
-      but.style.opacity = '0';
-  } else {
-      but.style.opacity = '1';
-  }
-});

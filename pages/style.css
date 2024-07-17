@@ -70,7 +70,7 @@ html {
 
 .menu {
   margin: auto;
-  margin-top: 100vh;
+  margin-top: 102vh;
   margin-bottom: 10vh;
   width: calc(80vw);
   height: 250px;
@@ -82,22 +82,26 @@ html {
 }
 
 .scroll-up {
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #007BFF;
-  color: white;
+  display: inline-block;
+  /* margin: 20px; */
+  margin-top: -14px;
+  padding: 25px 25px;
+  height: 25px;
+  /* font-size: 18px; */
+  background-color: rgba(0,0,0,0);
+  background-image: url('down-arrow.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-attachment: fixed; */
+  /* color: white; */
   border: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   cursor: pointer;
 }
 
-.scroll-up:hover {
-    background-color: #0056b3;
-}
-
 .scroll-down {
-    margin: 20px;
+    /* margin: 20px; */
     margin-top: 90vh;
     padding: 8px 12px;
     font-size: 18px;
