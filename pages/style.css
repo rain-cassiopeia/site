@@ -74,7 +74,10 @@ html {
   margin-bottom: 10vh;
   width: calc(80vw);
   height: 250px;
-  background-color: rgb(0, 4, 8);
+  background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtMjEtcGQtc2FzaS0wMy1qb2I1OTguanBn.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 15px;
   position: sticky;
   display: flex;
