@@ -21,27 +21,27 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Signup function
-async function signup() {
-  const email = document.getElementById("signupEmail").value;
-  const password = document.getElementById("signupPassword").value;
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    console.log("User signed up successfully");
-  } catch (error) {
-    console.error("Error signing up: ", error);
-  }
+window.signup = async function() {
+ const email = document.getElementById("signupEmail").value;
+ const password = document.getElementById("signupPassword").value;
+ try {
+   await createUserWithEmailAndPassword(auth, email, password);
+   console.log("User signed up successfully");
+ } catch (error) {
+   console.error("Error signing up: ", error);
+ }
 }
 
 // Login function
-async function login() {
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    console.log("User logged in successfully");
-  } catch (error) {
-    console.error("Error logging in: ", error);
-  }
+window.login = async function() {
+ const email = document.getElementById("loginEmail").value;
+ const password = document.getElementById("loginPassword").value;
+ try {
+   await signInWithEmailAndPassword(auth, email, password);
+   console.log("User logged in successfully");
+ } catch (error) {
+   console.error("Error logging in: ", error);
+ }
 }
 
 // Auth state listener
