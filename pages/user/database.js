@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 
@@ -72,16 +72,3 @@ function showsav() {
 function hidesav() {
   document.getElementById('icon').style.display = 'none';
 }
-
-//logout button
-
-const logout = async () => {
-  try {
-    await signOut(auth);
-    window.location.href = "../"; // Redirect to the login page after logout
-  } catch (error) {
-    console.error("Error signing out: ", error);
-  }
-};
-
-document.getElementById('logoutBtn').addEventListener('click', logout);
