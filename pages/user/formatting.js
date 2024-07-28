@@ -33,8 +33,6 @@ document.addEventListener('keydown', (event) => {
 //*
 
 //logout button
-document.getElementById('logoutBtn').addEventListener('click', logout);
-
 const logout = async () => {
   try {
     await signOut(auth);
@@ -43,3 +41,5 @@ const logout = async () => {
     console.error("Error signing out: ", error);
   }
 };
+
+document.getElementById('logoutBtn').addEventListener('click', logout);
