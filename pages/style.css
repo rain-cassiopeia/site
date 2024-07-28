@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background-color: #86a5a7;
+  background-image: url('pattrn.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+}
