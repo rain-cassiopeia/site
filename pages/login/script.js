@@ -48,7 +48,7 @@ window.login = async function() {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, redirect to notes page
-    window.location.href = "notes.html";
+    window.location.href = "../ya";
   } else {
     // No user is signed in, stay on login/signup page
   }
