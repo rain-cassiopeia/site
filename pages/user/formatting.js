@@ -29,3 +29,17 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+
+//*
+
+//logout button
+document.getElementById('logoutBtn').addEventListener('click', logout);
+
+const logout = async () => {
+  try {
+    await signOut(auth);
+    window.location.href = "../"; // Redirect to the login page after logout
+  } catch (error) {
+    console.error("Error signing out: ", error);
+  }
+};

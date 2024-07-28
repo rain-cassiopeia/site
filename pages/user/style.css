@@ -59,6 +59,17 @@ html {
   object-fit: contain;
 }
 
+#logoutBtn {
+  display: inline-block;
+  font-family: Didot, serif;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.2em;
+  position: fixed;
+  top: 35px;
+  left: 40px;
+}
+
 .testdiv {
   width: 20px;
   height: 200px;

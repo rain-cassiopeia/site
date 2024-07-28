@@ -33,16 +33,16 @@ window.signup = async function() {
 }
 
 // Login function
-window.login = async function() {
- const email = document.getElementById("loginEmail").value;
- const password = document.getElementById("loginPassword").value;
- try {
-   await signInWithEmailAndPassword(auth, email, password);
-   console.log("User logged in successfully");
- } catch (error) {
-   console.error("Error logging in: ", error);
- }
-}
+// window.login = async function() {
+//  const email = document.getElementById("loginEmail").value;
+//  const password = document.getElementById("loginPassword").value;
+//  try {
+//    await signInWithEmailAndPassword(auth, email, password);
+//    console.log("User logged in successfully");
+//  } catch (error) {
+//    console.error("Error logging in: ", error);
+//  }
+// }
 
 // Auth state listener
 onAuthStateChanged(auth, (user) => {
