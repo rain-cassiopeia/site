@@ -31,6 +31,3 @@ document.addEventListener('keydown', (event) => {
 });
 
 //*
-
-//logout button
-document.getElementById('logoutBtn').addEventListener('click', logout);

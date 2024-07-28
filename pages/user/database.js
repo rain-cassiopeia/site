@@ -73,6 +73,7 @@ function hidesav() {
   document.getElementById('icon').style.display = 'none';
 }
 
+//logout button
 
 const logout = async () => {
   try {
@@ -82,3 +83,5 @@ const logout = async () => {
     console.error("Error signing out: ", error);
   }
 };
+
+document.getElementById('logoutBtn').addEventListener('click', logout);
