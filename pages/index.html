@@ -6,17 +6,26 @@
     <title>login</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌧️</text></svg>">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class = "parent">
     <div id="title">PAGES</div>
-    <div id="login">
+    <!-- <div id="login">
       <h2>Login</h2>
       <input type="email" id="loginEmail" placeholder="Email">
       <input type="password" id="loginPassword" placeholder="Password">
       <button onclick="login()">Login</button>
+    </div> -->
+    <div id="signup">
+      <h2>Sign Up</h2>
+      <input type="email" id="signupEmail" placeholder="Email">
+      <input type="password" id="signupPassword" placeholder="Password">
+      <button onclick="signup()">Sign Up</button>
     </div>
-    <a href="/pages/signup">Create an Account</a>
+    <a id="signup" href="/pages/login">log in here</a>
   </div>
 
   <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
