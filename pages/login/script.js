@@ -32,7 +32,7 @@ const db = getFirestore(app);
 //  }
 // }
 
-Login function
+//Login function
 window.login = async function() {
  const email = document.getElementById("loginEmail").value;
  const password = document.getElementById("loginPassword").value;
