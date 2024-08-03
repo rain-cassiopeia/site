@@ -20,6 +20,7 @@ body {
   text-align: center;
   font-size: 10vw;
   margin-top: 5vh;
+  margin-bottom: calc(10px + 3vh);
   font-family: "Aclonica", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -27,4 +28,53 @@ body {
 
 #signup {
   margin-top: 5vh;
+  height: 110px;
+}
+
+.disc {
+  font-family: "EB Garamond", serif;
+  font-size: calc(20px + 1vw);
+  font-weight: 450;
+  font-style: normal;
+  text-align: center;
+  margin-top: 1vh;
+}
+
+#leftcol {
+  float: left;
+  display: block;
+}
+
+#rightcol {
+  float: left;
+  display: block;
+  vertical-align: middle;
+  margin-left: 25px;
+  height: 110px;
+}
+
+.butt {
+  font-family: "EB Garamond", serif;
+  font-size: 17px;
+  font-weight: 500;
+  height: 70%;
+  margin-top: 15%;
+  width: 100px;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 8px;
+}
+
+.butt:hover {
+  cursor: pointer;
+}
+
+.imp, .imp:focus {
+  background: none;
+  border: none;
+  outline:none;
+  border-bottom: 4px solid black;
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
 }
