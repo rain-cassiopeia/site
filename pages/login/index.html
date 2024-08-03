@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rain</title>
+    <title>pages | login</title>
+    <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌧️</text></svg>">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Comfortaa:wght@700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="login">
-    <h2>Login</h2>
-    <input type="email" id="loginEmail" placeholder="Email">
-    <input type="password" id="loginPassword" placeholder="Password">
-    <button onclick="login()">Login</button>
+  <div class = "parent">
+    <div class = "disc" style="margin: calc(20px + 10vh);">
+      log in with an existing account
+    </div>
+    <div id="login">
+      <div id="signup">
+        <div id="leftcol">
+          <input type="email" id="loginEmail" class="imp" placeholder="Email">
+          <br>
+          <br>
+          <input type="password" id="loginPassword" class="imp" placeholder="Password">
+        </div>
+        <div id="rightcol">
+          <button onclick="login()" class ="butt">
+            go
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class = "disc" style="font-size: 25px; margin-top: calc(20px + 8vh);">
+      or go back to
+    </div>
+    <button id="signup" class = "butt" onclick="location.href='../'" style="height:55px; margin-top: 3vh;">
+      sign up
+    </button>
   </div>
-
-  <!-- <div id="signup">
-    <h2>Sign Up</h2>
-    <input type="email" id="signupEmail" placeholder="Email">
-    <input type="password" id="signupPassword" placeholder="Password">
-    <button onclick="signup()">Sign Up</button>
-  </div> -->
-
-  <a href="../">go back to signup</a>
 
   <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
   <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
