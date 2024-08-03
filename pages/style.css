@@ -78,3 +78,17 @@ body {
   font-family: "EB Garamond", serif;
   font-size: 20px;
 }
+
+.gif-button {
+  display: inline-block;
+  padding: 50px 50px;
+  background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNhMTQ2MjYzcWhpNDFtcW52eDdtbXF3YTBlNWEzejF3OXpnYm95cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kravBhdlxib6MFBBJU/giphy.gif');
+  background-size: cover;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  /* background-color: rgba(89, 86, 86, 0.25); */
+}
