@@ -137,11 +137,11 @@ html {
     color: rgb(167, 168, 162);
 }
 
-
+/* STILL VERSION */
 .gif-button {
   display: inline-block;
   padding: 50px 50px;
-  background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNhMTQ2MjYzcWhpNDFtcW52eDdtbXF3YTBlNWEzejF3OXpnYm95cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kravBhdlxib6MFBBJU/giphy.gif');
+  background-image: url('a5a1fd42-6131-433e-900c-f86f9ff0da7a-0.png');
   background-size: cover;
   cursor: pointer;
   border: none;
