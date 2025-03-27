@@ -69,6 +69,6 @@ function showError(message) {
   errorDiv.style.display = "block";
 }
 
-function dismissError() {
+window.dismissError = function () {
   document.getElementById("error-message").style.display = "none";
-}
+};
