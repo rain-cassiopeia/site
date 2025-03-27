@@ -31,3 +31,11 @@ document.addEventListener('keydown', (event) => {
 });
 
 //*
+
+// font changing
+const fontselect = document.getElementById("fontmenu");
+fontselect.addEventListener("change", function () {
+  document.getElementById("page").style.fontFamily=fontselect.value;
+  fontselect.style.fontFamily=fontselect.value;
+  console.log("font is: ",fontselect.value);
+});
