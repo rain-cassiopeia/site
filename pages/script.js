@@ -29,6 +29,7 @@ window.signup = async function() {
    console.log("User signed up successfully");
  } catch (error) {
    console.error("Error signing up: ", error);
+   showError(error.message);
  }
 }
 
@@ -53,3 +54,21 @@ onAuthStateChanged(auth, (user) => {
     // No user is signed in, stay on login/signup page
   }
 });
+
+//error handling messages!
+
+function showError(message) {
+  const errorDiv = document.getElementById("error-message");
+
+  errorDiv.innerHTML = `
+    <div class="error-box">
+      <span>${message}</span>
+      <button onclick="dismissError()">×</button>
+    </div>
+  `;
+  errorDiv.style.display = "block";
+}
+
+function dismissError() {
+  document.getElementById("error-message").style.display = "none";
+}
