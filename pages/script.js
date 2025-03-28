@@ -49,7 +49,7 @@ window.signup = async function() {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, redirect to notes page
-    window.location.href = "/pages/user";
+    window.location.href = "/pages/write";
   } else {
     // No user is signed in, stay on login/signup page
   }

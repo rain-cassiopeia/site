@@ -53,7 +53,6 @@ html {
   font-style: italic;
   text-align: center;
   font-size: 1.2em;
-
   transition: opacity 1s ease-in-out;
 }
 
@@ -165,7 +164,7 @@ html {
   /* background-color: rgba(89, 86, 86, 0.25); */
 }
 
-.font-sel{
+.selector{
   background-color: rgba(255,255,255,0);
   border: 1px solid #858585;
   border-radius: 2px;

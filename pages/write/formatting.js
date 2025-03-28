@@ -39,3 +39,11 @@ fontselect.addEventListener("change", function () {
   fontselect.style.fontFamily=fontselect.value;
   console.log("font is: ",fontselect.value);
 });
+
+//font size changing
+
+const fsi = document.getElementById("font-size-input");
+fsi.addEventListener("change", function () {
+    document.getElementById("page").style.fontSize = `${fsi.value}px`;
+    console.log("font size is: ", fsi.value);
+});
