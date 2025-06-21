@@ -2,7 +2,7 @@
 
 Here's some nice global variables to tweak with the visuals!
 
-i now reccomend against tweaking these manually, that's what the buttons on the 
+i now recomend against tweaking these manually, that's what the buttons on the 
 actual webpage are for!! :D 
 
 */
@@ -39,7 +39,7 @@ START_B = 250
 // automatic mode
 RUN = true
 
-// this is so stupid
+// this is so silly
 DARKMODE = false
 
 // delay goes up to 100, slows down propagation
@@ -52,9 +52,8 @@ GENERATION = 0
 //debug
 DEBUG = false
 
-//mousehold mode ugh 
+//mousehold mode  
 MOUSEHOLD = false
-
 
 //this feels like a silly thing to have a global variable for
 MOUSEISPRESSED = false
