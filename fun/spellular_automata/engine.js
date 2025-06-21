@@ -1,14 +1,14 @@
 /*
 Notes on the structure of the generating engine--
 
-pixList stores every pixel in the canvas, knowing its position, whether it is alive, and its generation
-    generation corrisponds to which mouseclick generated the pixels, allows for overlap/non overlap in pixels.
-    when the screen is wiped, pixlist resets.
-edgeList contains live updating edges. edges also know their color, delta (chances of replication), and actual position on the canvas.
-    once edges are fully surrounded by live cells, they are removed from the edgelist, since there is no longer a chance of replication.
+- pixList stores every pixel in the canvas, knowing its position, whether it is alive, and its generation
+    - generation corresponds to which mouseclick generated the pixels, which allows for overlap/non overlap in pixels.
+    - when the screen is wiped, pixlist resets.
+- edgeList contains live updating edges. edges also know their color, delta (chances of replication), and actual position on the canvas.
+    - once edges are fully surrounded by live cells, they are removed from the edgelist, since there is no longer a chance of replication.
 
 when in single click mode, clicking the mouse on the canvas triggers onclick, which adds the clicked pixel to edgelist.
-requestanimationframe runs animate, which in mouse drag mode also spawns live edges when mouse is dragged.
+requestanimationframe runs animate, which also spawns live edges when mouse is dragged in mouse drag mode. 
 additionally it calls cycle, which updates every live edge.
 */
 
@@ -143,7 +143,7 @@ function spawn(parentGeneration, parentColor, parentDelta, [px, py]) {
     let newColor = mutateColor(parentColor);
     let newPixel = new Edge(px, py, newColor, mutateDelta(parentDelta), parentGeneration);
     console.log(newColor[0]);
-    nextEdgeList.push(newPixel); // im assuming it would be quicker to do this without checking but idk
+    nextEdgeList.push(newPixel); // im assuming it would be quicker to do this without checking
     offscreenCtx.fillStyle = `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`;
     offscreenCtx.fillRect(newPixel.real_x, newPixel.real_y, 2, 2); // 2x2!
 }
@@ -227,7 +227,6 @@ function animate() {
             }
         }
     }
-
     ctx.drawImage(offscreenCanvas, 0, 0);
     setTimeout(function() { //not sure if this is the most efficient way to do this...
         requestAnimationFrame(animate);
