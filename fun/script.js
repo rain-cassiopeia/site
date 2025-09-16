@@ -22,5 +22,7 @@ function getRandomPastelColor() {
   setInterval(() => {
     changeButtonColor('1');
     changeButtonColor('2');
+    changeButtonColor('3');
+    changeButtonColor('4');
     
   }, 2000);
