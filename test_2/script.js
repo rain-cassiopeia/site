@@ -10,18 +10,30 @@ function tick() {
     document.getElementById("y_scr").innerHTML = loc_y;
     //-
     marco(loc_x, loc_y);
-    console.log(Dict);
 
     ctx.clearRect(0,0,c.width,c.height);
     ctx.beginPath();
+    // console.log(Dict);
 
     
 
-    Object.values(Dict).forEach(value => {
+    // Object.values(Dict).forEach(value => {
+    //     ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
+    //     ctx.lineTo(value[0] - window.screenX, value[1] - window.screenY);
+    //     ctx.stroke();
+    // }); 
+
+    Object.values(Dict).forEach(i => {
         ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
-        ctx.lineTo(value[0] - window.screenX, value[1] - window.screenY);
-        ctx.stroke();
+        ctx.lineTo(i[0] - window.screenX, i[1] - window.screenY);
+        // ctx.stroke();
+        Object.values(Dict).forEach(j => {
+            ctx.moveTo(i[0] - window.screenX, i[1] - window.screenY);
+            ctx.lineTo(j[0] - window.screenX, j[1] - window.screenY);
+            // ctx.stroke();
+        });
     }); 
+    ctx.stroke();
 }
 
 //--
