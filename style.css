@@ -1,44 +1,32 @@
 body {
     background-image: url('https://media.tenor.com/e2TLdJ7Dr14AAAAC/sh.gif');
-    background-size: cover; 
+    background-size: cover;
     background-attachment: fixed;
     background-position: top;
 }
 
 .centered-box {
-  margin: 0 auto; 
-  background-color: rgba(41, 125, 182, 0.5); 
+  margin: 0 auto;
+  background-color: rgba(41, 125, 182, 0.7);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px; 
+  padding: 20px;
   text-align: center;
   font-family: 'didot', serif;
   font-size: 20px;
-  color: #fff; 
+  color: #fff;
   border-radius: 5px;
 }
 
-.badass_button {
-  background-color: rgba(38, 94, 69, 0.5); 
-  outline: 3px solid rgba(41, 82, 64, 0.8);
+.left-box{
+  display: inline-block;
+  text-align: left;
+  width: fit-content;
+}
+
+a{
+  text-decoration: none;
   color: #c9c9a5;
 }
-
-.badass_button:hover {
-  background-color: rgba(38, 94, 69, 0.7); 
-  outline: 3px solid rgba(41, 82, 64, 0.9); 
-  color: #d6d6ae;
-}
-
-#_2, #_3, #_4 {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 15px;
-  font-size: 25px; 
-  font-family: 'georgia', serif;
-  transition: background-color 0.3s, color 0.3s, outline 0.3s;
-}
-
