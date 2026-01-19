@@ -4,10 +4,10 @@
 function tick() {
     loc_x = window.screenX + window.innerWidth/2;
     loc_y = window.screenY + window.innerHeight/2;
-    document.getElementById("window_height").innerHTML = window.innerHeight;
-    document.getElementById("window_width").innerHTML = window.innerWidth;
-    document.getElementById("x_scr").innerHTML = loc_x;
-    document.getElementById("y_scr").innerHTML = loc_y;
+    // document.getElementById("window_height").innerHTML = window.innerHeight;
+    // document.getElementById("window_width").innerHTML = window.innerWidth;
+    // document.getElementById("x_scr").innerHTML = loc_x;
+    // document.getElementById("y_scr").innerHTML = loc_y;
     //-
     marco(loc_x, loc_y);
 
@@ -15,13 +15,13 @@ function tick() {
     ctx.beginPath();
     // console.log(Dict);
 
-    
+
 
     // Object.values(Dict).forEach(value => {
     //     ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
     //     ctx.lineTo(value[0] - window.screenX, value[1] - window.screenY);
     //     ctx.stroke();
-    // }); 
+    // });
 
     Object.values(Dict).forEach(i => {
         ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
@@ -32,15 +32,15 @@ function tick() {
             ctx.lineTo(j[0] - window.screenX, j[1] - window.screenY);
             // ctx.stroke();
         });
-    }); 
+    });
     ctx.stroke();
 }
 
 //--
 
 var c = document.getElementById("c");
-c.width = window.innerWidth;
-c.height = window.innerHeight;
+c.width = window.outerWidth;
+c.height = window.outerHeight;
 var ctx = c.getContext("2d");
 
 //--
@@ -57,7 +57,7 @@ function marco(loc_x, loc_y) {
     channel.postMessage({
         sender: self.id || "(anon window)",
         loc_x,
-        loc_y        
+        loc_y
     });
 }
 
