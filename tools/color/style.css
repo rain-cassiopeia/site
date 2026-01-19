@@ -1,0 +1,17 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #799;
+  font-size: 40px;
+}
+
+*:focus {
+    outline: none;
+}
