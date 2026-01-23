@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #242e25;
+}
+
+.cont {
+    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.data {
+    background-color: #000000;
+    text-align: center;
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+a {
+    color: #ccc;
+    text-decoration:none;
+    font-family: "Zain", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
