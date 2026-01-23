@@ -4,48 +4,32 @@
 function tick() {
     loc_x = window.screenX + window.innerWidth/2;
     loc_y = window.screenY + window.innerHeight/2;
-    // document.getElementById("window_height").innerHTML = window.innerHeight;
-    // document.getElementById("window_width").innerHTML = window.innerWidth;
-    // document.getElementById("x_scr").innerHTML = loc_x;
-    // document.getElementById("y_scr").innerHTML = loc_y;
-    //-
     marco(loc_x, loc_y);
 
     ctx.clearRect(0,0,c.width,c.height);
     ctx.beginPath();
-    // console.log(Dict);
-
-
-
-    // Object.values(Dict).forEach(value => {
-    //     ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
-    //     ctx.lineTo(value[0] - window.screenX, value[1] - window.screenY);
-    //     ctx.stroke();
-    // });
 
     Object.values(Dict).forEach(i => {
         ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
         ctx.lineTo(i[0] - window.screenX, i[1] - window.screenY);
-        // ctx.stroke();
         Object.values(Dict).forEach(j => {
             ctx.moveTo(i[0] - window.screenX, i[1] - window.screenY);
             ctx.lineTo(j[0] - window.screenX, j[1] - window.screenY);
-            // ctx.stroke();
         });
     });
     ctx.stroke();
 }
 
-//--
-
 var c = document.getElementById("c");
 c.width = window.outerWidth;
 c.height = window.outerHeight;
-var ctx = c.getContext("2d");
 
-//--
-// var a=0;
-// var b=0;
+var ctx = c.getContext("2d");
+ctx.shadowColor = "white";
+ctx.shadowBlur = 15;
+ctx.lineWidth = 3;
+ctx.lineCap = "round";
+ctx.strokeStyle = "#caa5d3"
 
 const Dict = {};
 
@@ -66,16 +50,4 @@ channel.onmessage = (event) => {
     Dict[sender] = [loc_x, loc_y];
 };
 
-
-
 const intervalId = setInterval(tick, 15);
-
-//var bounding_box = document.getElementsByClassName("data")[0].getBoundingClientRect();
-//console.log(bounding_box.top, bounding_box.right, bounding_box.bottom, bounding_box.left);
-
-// document.getElementById("x_win").innerHTML = bounding_box.left + document.getElementsByClassName("data")[0].clientWidth/2;
-// document.getElementById("y_win").innerHTML = bounding_box.top + document.getElementsByClassName("data")[0].clientHeight/2;
-
-// document.addEventListener("click", function (event) {
-//     console.log("Client X:", event.clientX, "Client Y:", event.clientY);
-// });
