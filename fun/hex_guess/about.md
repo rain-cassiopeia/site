@@ -35,3 +35,24 @@ Alternatives:
 - per-channel percent correctness and no digit correctness indicators
 - first digit and both digit correctness indicators but no just-second-digit ones. could go with overall %
 
+ok let's talk about implementation
+
+overall percentage correctness is interesting. does it make a difference to average or sum 
+the channels? I think not.. ok but what about how middle grey has a min correctness of 50% whereas
+black or white have a min correctness of 0. Not sure if that's correctable,, color wrapping doesn't really make any sense here.. 
+because a colorspace like rgb is a finite 3d space, some points are simply closer to all other points. 
+
+ok, so we take each color channel of the guess and find its abs() difference from the answer channel,
+i guess sum those and divide by 3*256. or 255, that is. 
+
+ok this is easy to do statically. 
+- on load, generate random color and show it somehow
+- have six digit guess input, allow user to type and hit enter
+- indicate correct letters and display percentage correctness, as well as displaying the guessed color somehow
+
+OMG here's a thought, minor detail actually but whatevs, what if we lock the correct colors! cause its not like
+wordle ur not incentivised to guess more. i kind of like that, little convenience thing. that way ppl def wont forget
+
+soo what do we want it to look like :D
+
+i dont think having the whole background as either the guessed or actual color is that good of an idea 
