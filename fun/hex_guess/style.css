@@ -22,6 +22,8 @@ body{
   border-radius: 10px;
   text-align: center;
   margin: 2px;
+  text-transform: uppercase;
+  pointer-events: none; /* this is to prevent clicking into it */
 }
 
 
