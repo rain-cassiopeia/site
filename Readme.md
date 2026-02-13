@@ -10,3 +10,6 @@ What about a single passphrase, with an explanation and an example,, like leave
 blank to be taken to the defaul page. i like that.
 
 Math!
+
+
+stop nesting folders, move folders to main, no more /fun/mouse_effects, fun should just direct to mouse effects
