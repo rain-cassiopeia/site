@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>schemin n plottin</title>
+    </head>
+    <body onload="javascript:getData()">
+        <h1>im messing with local storage today</h1>
+        <p>this site should tell you how many times you have visited it</p>
+        <p>you have visited this page <span id="lol">0</span> times</p>
+    <script type="text/javascript">
+        function getData() {
+            lmao = localStorage.funky_town;
+            if (lmao) {
+                localStorage.funky_town = parseInt(lmao) + 1;
+                document.getElementById("lol").textContent = localStorage.funky_town;
+            } else {
+                localStorage.funky_town = 1;
+            }
+        }
+    </script>
+    </body>
+</html>
