@@ -11,20 +11,20 @@ function setFocusAndCursor() {
 
 setFocusAndCursor();
 
-var edit_me = document.getElementById('edit_me');
+let edit_me = document.getElementById('edit_me');
 
 edit_me.addEventListener('focusout', (event) => {
     setFocusAndCursor();
 });
 
-var dv = document.getElementsByClassName("dv")[0];
+let dv = document.getElementsByClassName("dv")[0];
 
 dv.addEventListener('input', function() {
+    const text = dv.textContent;
     if (text.length == 5 || text.length == 8){
-        const text = dv.textContent;
         document.body.style.backgroundColor = text;
-        colorFavicon(text)
-        colorText(text)
+        colorFavicon(text);
+        colorText(text);
     }
 });
 
@@ -34,9 +34,7 @@ document.body.style.backgroundColor = text;
 const colorText = (colr) => {
     // W3 guideline for luminance is (0.299*R + 0.587*G + 0.114*B)
     // colr.substring(0,2)
-    let R;
-    let G;
-    let B;
+    let R; let G; let B;
 
     if (colr.length == 5) { //one characterfor the # and one for the newline
         R = colr[1]+'0';
