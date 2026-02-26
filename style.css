@@ -1,33 +1,35 @@
 body {
-    background-image: url('media/waterfall.jpg');
+    background-color: #a8afd9;
+    background-image: url('media/pasatel.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: top;
 }
 
 .centered-box {
-  margin: 0 auto;
-  background-color: rgba(41, 125, 182, 0.7);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  text-align: center;
-  font-family: 'didot', serif;
-  font-size: 20px;
-  color: #fff;
-  border-radius: 5px;
-  min-width: 30vw;
+    margin: 0 auto;
+    background-color: #448dc4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    font-family: 'didot', serif;
+    font-size: 20px;
+    color: white;
+    mix-blend-mode: multiply;
+    border-radius: 12px;
+    min-width: 30vw;
 }
 
 .left-box{
-  display: inline-block;
-  text-align: left;
-  width: fit-content;
+    display: inline-block;
+    text-align: left;
+    width: fit-content;
 }
 
 a{
-  text-decoration: none;
-  color: #c9c9a5;
+    text-decoration: none;
+    color: white;
 }

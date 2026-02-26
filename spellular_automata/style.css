@@ -23,9 +23,9 @@ canvas {
     margin-left: 20px;
     margin-top: 10px;
     width: 310px;
-    height: 4px; 
-    background-color: rgb(104, 102, 98); 
-    border-radius: 2px; 
+    height: 4px;
+    background-color: rgb(104, 102, 98);
+    border-radius: 2px;
 }
 
 .sidebar {
@@ -40,16 +40,16 @@ canvas {
     transition: right 0.4s ease;
     overflow-y: scroll;
     padding-bottom: 20px;
-    scrollbar-width: thin; 
+    scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
 
 .sidebar.active {
-    right: 0; 
+    right: 0;
 }
 
 .sidebar::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
@@ -62,12 +62,12 @@ canvas {
     right: 20px;
     z-index: 1;
     cursor: pointer;
-    background-image: url('https://friconix.com/png/fi-xwluxx-three-bars-wide.png'); 
+    background-image: url('https://friconix.com/png/fi-xwluxx-three-bars-wide.png');
     background-size: cover;
     background-color: transparent;
     border: none;
     padding: 25px;
-    transition: right 0.4s ease, background-color 0.4s; 
+    transition: right 0.4s ease, background-color 0.4s;
 }
 
 .toggle-sidebar-button.active {
@@ -77,21 +77,21 @@ canvas {
 .gif-button {
     display: inline-block;
     padding: 40px 40px;
-    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNhMTQ2MjYzcWhpNDFtcW52eDdtbXF3YTBlNWEzejF3OXpnYm95cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kravBhdlxib6MFBBJU/giphy.gif'); 
+    background-image: url('/media/raining.gif');
     background-size: cover;
     border: none;
     border-radius: 5px;
     position: absolute;
-    top: 20px; 
+    top: 20px;
     left: 20px;
     background-color: rgba(89, 86, 86, 0.3);
 }
 
 .label {
     position: absolute;
-    top: 30px; 
-    left: 87px; 
-    margin: 0; 
+    top: 30px;
+    left: 87px;
+    margin: 0;
     font-family: 'Comfortaa', sans-serif;
     font-size: 23px;
     color: rgb(89, 86, 86);
@@ -167,11 +167,11 @@ canvas {
     -webkit-transition: .2s;
     transition: opacity .2s;
   }
-  
+
   .slider2:hover {
     opacity: 1;
   }
-  
+
   .slider2::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -181,7 +181,7 @@ canvas {
     background: #04AA6D;
     cursor: pointer;
   }
-  
+
   .slider2::-moz-range-thumb {
     width: 25px;
     height: 25px;
