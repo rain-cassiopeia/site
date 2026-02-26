@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guess da color</title>
+    <link rel="icon" href="/media/rain.gif" type="image/gif">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Numans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="parent" style="flex-direction: column;">
+        <div class="parent">
+            <h1>WORKING TITLE</h1>
+        </div>
+
+        <div class="parent" style="width: 280px; font-size: 20px; padding-top: 50px; padding-bottom: 100px;">
+            Guess this color:
+            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                <circle id = "solution_circle" r="25" cx="25" cy="25"/>
+            </svg>
+        </div>
+
+
+        <div id = "result_1" class="parent" style="display: none;">
+            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                <circle id = "guess_1_circle" r="25" cx="25" cy="25"/>
+            </svg>
+            <div id = "r_1_1" class="space"></div>
+            <div id = "r_1_2" class="space"></div>
+            <div id = "r_1_3" class="space"></div>
+            <div id = "r_1_4" class="space"></div>
+            <div id = "r_1_5" class="space"></div>
+            <div id = "r_1_6" class="space"></div>
+            <svg height = "50" width = "50"></svg>
+        </div>
+
+        <div id = "result_2" class="parent" style="display: none;">
+            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                <circle id = "guess_2_circle" r="25" cx="25" cy="25"/>
+            </svg>
+            <div id = "r_2_1" class="space"></div>
+            <div id = "r_2_2" class="space"></div>
+            <div id = "r_2_3" class="space"></div>
+            <div id = "r_2_4" class="space"></div>
+            <div id = "r_2_5" class="space"></div>
+            <div id = "r_2_6" class="space"></div>
+            <svg height = "50" width = "50"></svg>
+        </div>
+
+        <div id = "result_3" class="parent" style="display: none;">
+            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                <circle id = "guess_3_circle" r="25" cx="25" cy="25"/>
+            </svg>
+            <div id = "r_3_1" class="space"></div>
+            <div id = "r_3_2" class="space"></div>
+            <div id = "r_3_3" class="space"></div>
+            <div id = "r_3_4" class="space"></div>
+            <div id = "r_3_5" class="space"></div>
+            <div id = "r_3_6" class="space"></div>
+            <svg height = "50" width = "50"></svg>
+        </div>
+
+        <div id = "result_4" class="parent" style="display: none;">
+            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                <circle id = "guess_4_circle" r="25" cx="25" cy="25"/>
+            </svg>
+            <div id = "r_4_1" class="space"></div>
+            <div id = "r_4_2" class="space"></div>
+            <div id = "r_4_3" class="space"></div>
+            <div id = "r_4_4" class="space"></div>
+            <div id = "r_4_5" class="space"></div>
+            <div id = "r_4_6" class="space"></div>
+            <svg height = "50" width = "50"></svg>
+        </div>
+
+        <div id = "result_5" class="parent" style="display: none;">
+            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                <circle id = "guess_5_circle" r="25" cx="25" cy="25"/>
+            </svg>
+            <div id = "r_5_1" class="space"></div>
+            <div id = "r_5_2" class="space"></div>
+            <div id = "r_5_3" class="space"></div>
+            <div id = "r_5_4" class="space"></div>
+            <div id = "r_5_5" class="space"></div>
+            <div id = "r_5_6" class="space"></div>
+            <svg height = "50" width = "50"></svg>
+        </div>
+
+        <div id = "guess_container" class="parent">
+            <div id = "1" class="space" contenteditable="true"></div>
+            <div id = "2" class="space" contenteditable="true"></div>
+            <div id = "3" class="space" contenteditable="true"></div>
+            <div id = "4" class="space" contenteditable="true"></div>
+            <div id = "5" class="space" contenteditable="true"></div>
+            <div id = "6" class="space" contenteditable="true"></div>
+            <div id = "7"></div> <!-- I feel so hot and sexy for this workaround -->
+        </div>
+
+    </div>
+    <!-- <a href="/" class="gif-button"></a> -->
+    <script src="script.js"></script>
+</body>
+</html>

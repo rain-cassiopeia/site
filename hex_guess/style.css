@@ -1,0 +1,40 @@
+body{
+  font-family: "Numans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.parent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+.space {
+  --size: 42px;
+  width: var(--size);
+  height: var(--size);
+  font-size: var(--size);
+  line-height: var(--size);
+  border: 2px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2px;
+  text-transform: uppercase;
+  pointer-events: none; /* this is to prevent clicking into it */
+}
+
+.gif-button {
+    display: inline-block;
+    padding: 40px 40px;
+    background-image: url('/media/raining.gif');
+    background-size: cover;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(89, 86, 86, 0.3);
+}

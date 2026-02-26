@@ -34,16 +34,16 @@ body{
   color: #505050;
   transition: background-color 2s ease;
 }
-  
+
 .gif-button {
   display: inline-block;
   padding: 50px 50px;
-  background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNhMTQ2MjYzcWhpNDFtcW52eDdtbXF3YTBlNWEzejF3OXpnYm95cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kravBhdlxib6MFBBJU/giphy.gif'); 
+  background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNhMTQ2MjYzcWhpNDFtcW52eDdtbXF3YTBlNWEzejF3OXpnYm95cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kravBhdlxib6MFBBJU/giphy.gif');
   background-size: cover;
   cursor: pointer;
   border: none;
   border-radius: 5px;
   position: absolute;
-  top: 20px; 
+  top: 20px;
   left: 20px;
 }

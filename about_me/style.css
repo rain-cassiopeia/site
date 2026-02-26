@@ -1,6 +1,6 @@
 body {
     background-color: #a8afd9;
-    background-image: url('media/pasatel.jpg');
+    background-image: url('/media/pasatel.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: top;
@@ -27,9 +27,27 @@ body {
     display: inline-block;
     text-align: left;
     width: fit-content;
+    padding-left: 10px;
+}
+
+.gif-button {
+    display: inline-block;
+    padding: 40px 40px;
+    background-image: url('/media/raining.gif');
+    background-size: cover;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /* background-color: rgba(89, 86, 86, 0.3); */
 }
 
 a{
     text-decoration: none;
     color: white;
+}
+
+img{
+    margin-bottom: -4px; /* JANK FIX BECAUSE ICONS WERE TOO HIGH */
 }
