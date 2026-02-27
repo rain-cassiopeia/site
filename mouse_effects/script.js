@@ -17,7 +17,6 @@ document.addEventListener('mousedown', function () {
 document.addEventListener('mouseup', function () {
     updateClickState(false);
 });
-//----------------------------------------------
 
 //--------------spacebar pressed functionality -----
 let isSpacePressed = false;
@@ -34,7 +33,7 @@ document.addEventListener('keyup', function (event) {
         console.log('Space key is released!');
     }
 });
-//--------------------------------------------
+
 
 document.addEventListener("mousemove", (event) => {
     x = event.clientX;
@@ -74,7 +73,7 @@ function createStar(event) {
 
     setTimeout(() => {
         star.remove();
-    }, fadeTime); 
+    }, fadeTime);
     // star.style.animation = 'fadeOut 2.8s ease-out';
     do_slow = true;
 }
@@ -83,7 +82,7 @@ function createStar(event) {
 
 
 function fall() {
-    const stars = document.querySelectorAll('.star, .chonky_star'); 
+    const stars = document.querySelectorAll('.star, .chonky_star');
     stars.forEach((star) => {
         const timeAlive = parseInt(star.getAttribute('data-time-alive'), 10) || 0;
         star.setAttribute('data-time-alive', timeAlive + 2);

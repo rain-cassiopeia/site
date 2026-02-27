@@ -1,14 +1,16 @@
 body {
-    margin: 0;
     overflow: hidden;
-    cursor: none;
-    background-color: #1f052c;
+    background-color: #a8afd9;
+    background-image: url('/media/pasatel.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top;
 }
 
 .star {
     position: absolute;
     /* background-color: #fff; */
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Four_points_star.svg/2066px-Four_points_star.svg.png);
+    background-image: url('/media/four_pointed_star.png');
     background-size: cover;
     background-position: center;
     width: 10px;
@@ -22,7 +24,7 @@ body {
 .chonky_star {
     position: absolute;
     /* background-color: #fff; */
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/4/4f/Star-alt-icon.png);
+    background-image: url('/media/five_pointed_star.png');
     background-size: cover;
     background-position: center;
     width: 30px;
