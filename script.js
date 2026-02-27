@@ -6,4 +6,4 @@ function checkWindowSize() {
 
 checkWindowSize();
 
-window.addEventListener('resize', checkWindowSize);  
+// window.addEventListener('resize', checkWindowSize);  
