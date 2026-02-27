@@ -23,6 +23,12 @@ body {
     min-width: 30vw;
 }
 
+@media only screen and (max-width: 800px)  {
+    .centered-box {
+        min-width: 72vw;
+    }
+}
+
 .left-box{
     display: inline-block;
     text-align: left;
