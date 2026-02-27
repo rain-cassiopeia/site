@@ -23,12 +23,6 @@ body {
     min-width: 30vw;
 }
 
-@media only screen and (max-width: 800px)  {
-    .centered-box {
-        min-width: 72vw;
-    }
-}
-
 .left-box{
     display: inline-block;
     text-align: left;
@@ -38,4 +32,14 @@ body {
 a{
     text-decoration: none;
     color: white;
+}
+
+@media only screen and (max-width: 800px)  {
+    .centered-box {
+        min-width: 72vw;
+    }
+
+    html, body {
+        overflow: hidden !important;
+    }
 }

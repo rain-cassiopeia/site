@@ -60,4 +60,8 @@ img{
     .gif-button {
         display: none;
     }
+
+    html, body {
+        overflow: hidden !important;
+    }
 }
