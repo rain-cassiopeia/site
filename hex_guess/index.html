@@ -13,20 +13,30 @@
 <body>
     <div class="parent" style="flex-direction: column;">
         <div class="parent">
-            <h1>WORKING TITLE</h1>
+            <h1><span id = "title">GUESS THIS COLOR</span></h1>
         </div>
 
-        <div class="parent" style="width: 280px; font-size: 20px; padding-top: 50px; padding-bottom: 100px;">
-            Guess this color:
-            <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
-                <circle id = "solution_circle" r="25" cx="25" cy="25"/>
-            </svg>
+        <div class="parent" id = "hint_circles" style="width: 425px; font-size: 20px; padding-top: 60px;
+            padding-bottom: 40px; justify-content: space-between; visibility: hidden;">
+            <div class="parent" style="width: 200px; justify-content: flex-end;">
+                solution &nbsp; &nbsp;
+                <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                    <circle id = "solution_circle" r="25" cx="25" cy="25"/>
+                </svg>
+            </div>
+            <div class="parent" style="width: 200px; justify-content: flex-start;">
+                <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
+                    <circle id = "guess_circle" r="25" cx="25" cy="25"/>
+                </svg>
+                &nbsp; &nbsp; your guess
+            </div>
         </div>
 
 
         <div id = "result_1" class="parent" style="display: none;">
             <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                 <circle id = "guess_1_circle" r="25" cx="25" cy="25"/>
+                <text id = "percent_1" x="50%" y="50%" text-anchor="middle" dy=".3em"></text>
             </svg>
             <div id = "r_1_1" class="space"></div>
             <div id = "r_1_2" class="space"></div>
@@ -40,6 +50,7 @@
         <div id = "result_2" class="parent" style="display: none;">
             <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                 <circle id = "guess_2_circle" r="25" cx="25" cy="25"/>
+                <text id = "percent_2" x="50%" y="50%" text-anchor="middle" dy=".3em"></text>
             </svg>
             <div id = "r_2_1" class="space"></div>
             <div id = "r_2_2" class="space"></div>
@@ -53,6 +64,7 @@
         <div id = "result_3" class="parent" style="display: none;">
             <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                 <circle id = "guess_3_circle" r="25" cx="25" cy="25"/>
+                <text id = "percent_3" x="50%" y="50%" text-anchor="middle" dy=".3em"></text>
             </svg>
             <div id = "r_3_1" class="space"></div>
             <div id = "r_3_2" class="space"></div>
@@ -66,6 +78,7 @@
         <div id = "result_4" class="parent" style="display: none;">
             <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                 <circle id = "guess_4_circle" r="25" cx="25" cy="25"/>
+                <text id = "percent_4" x="50%" y="50%" text-anchor="middle" dy=".3em"></text>
             </svg>
             <div id = "r_4_1" class="space"></div>
             <div id = "r_4_2" class="space"></div>
@@ -79,6 +92,7 @@
         <div id = "result_5" class="parent" style="display: none;">
             <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                 <circle id = "guess_5_circle" r="25" cx="25" cy="25"/>
+                <text id = "percent_5" x="50%" y="50%" text-anchor="middle" dy=".3em"></text>
             </svg>
             <div id = "r_5_1" class="space"></div>
             <div id = "r_5_2" class="space"></div>
@@ -92,6 +106,7 @@
         <div id = "result_6" class="parent" style="display: none;">
             <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                 <circle id = "guess_6_circle" r="25" cx="25" cy="25"/>
+                <text id = "percent_6" x="50%" y="50%" text-anchor="middle" dy=".3em"></text>
             </svg>
             <div id = "r_6_1" class="space"></div>
             <div id = "r_6_2" class="space"></div>

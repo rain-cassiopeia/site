@@ -1,6 +1,8 @@
 const SOLUTION = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
 console.log(SOLUTION);
 document.getElementById('solution_circle').style.fill = SOLUTION;
+document.body.style.background = `linear-gradient(${SOLUTION}, ${SOLUTION} 75px, white 115px)`;
+colorText(SOLUTION);
 
 const NUM_ROUNDS = 6;
 const allowed_chars = "0123456789abcdefABCDEF" //allowed characters
@@ -78,6 +80,8 @@ document.getElementById('guess_container').addEventListener('focusout', function
 });
 
 function process_guess() { // this runs when a guess gets guessed
+    if (ROUND == 0) {document.getElementById('hint_circles').style.visibility = ""} //show top circles
+
     ROUND += 1;
 
     guess = '#' + // calculate the guess
@@ -89,12 +93,17 @@ function process_guess() { // this runs when a guess gets guessed
         document.getElementById('6').textContent;
     console.log("GUESS IS " + guess + " ON ROUND " + ROUND);
 
-    document.getElementById('guess_'+ROUND.toString()+'_circle').style.fill = guess; //fill guess circle
+    document.getElementById('guess_circle').style.fill = guess;
+    document.getElementById('guess_'+ROUND.toString()+'_circle').style.fill = guess; //fill guess circles
+
 
     if (guess == SOLUTION) {
         console.log("WE WIN THESE");
         // do smth
     }
+
+    //handle percentage text
+    document.getElementById('percent_'+ROUND.toString()).textContent = percentage_difference(SOLUTION, guess)+'%';
 
     ids.forEach(id => {
         document.getElementById('r_'+ROUND.toString()+'_'+id).textContent =
@@ -125,3 +134,45 @@ function process_guess() { // this runs when a guess gets guessed
         //probably want to do more here eventually. like a you lost dialogue.
     }
 };
+
+function colorText(colr) { //sets text to black or white for max background contrast
+    // W3 guideline for luminance is (0.299*R + 0.587*G + 0.114*B)
+    // colr is a string hex code including the #
+    let R = colr.substring(1,3);
+    let G = colr.substring(3,5);
+    let B = colr.substring(5,7);
+
+    R = parseInt(R, 16);
+    G = parseInt(G, 16);
+    B = parseInt(B, 16);
+
+    let middle_grey = (0.299*128 + 0.587*128 + 0.114*128);
+    let luminance = (0.299*R + 0.587*G + 0.114*B);
+    if (luminance > middle_grey) { document.getElementById("title").style.color = "black";}
+    else { document.getElementById("title").style.color = "white";}
+}
+
+function percentage_difference(col_1, col_2) { //it do what it says on the tin
+    //colors are hex code strings with # included
+    let R1 = col_1.substring(1,3);
+    let G1 = col_1.substring(3,5);
+    let B1 = col_1.substring(5,7);
+    let R2 = col_2.substring(1,3);
+    let G2 = col_2.substring(3,5);
+    let B2 = col_2.substring(5,7);
+
+    R1 = parseInt(R1, 16);
+    G1 = parseInt(G1, 16);
+    B1 = parseInt(B1, 16);
+    R2 = parseInt(R2, 16);
+    G2 = parseInt(G2, 16);
+    B2 = parseInt(B2, 16);
+
+    let dr = Math.abs(R1-R2);
+    let dg = Math.abs(G1-G2);
+    let db = Math.abs(B1-B2);
+
+    return Math.round((dr+dg+db)/(255*3)*100); //hacky way to get one decial point NEEDS FIXING HERE
+}
+
+console.log("ITS THISS "+percentage_difference("#fffffe","#000000"))
