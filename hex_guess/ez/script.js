@@ -109,11 +109,10 @@ function process_guess() { // this runs when a guess gets guessed
         document.getElementById('r_'+ROUND.toString()+'_'+id).textContent =
             document.getElementById(id).textContent; // copy over current guess into appropraite guess display
 
-        document.getElementById('r_'+ROUND.toString()+'_'+id).style.backgroundColor =
-            document.getElementById(id).style.backgroundColor; //copy over color also
-
         if (document.getElementById(id).textContent == SOLUTION[parseInt(id)]) { //handle correct digits
-            document.getElementById(id).style.backgroundColor = "green"; //set color in guess container
+            document.getElementById(id).style.backgroundColor = "#95cB72"; //set color in guess container
+            document.getElementById('r_'+ROUND.toString()+'_'+id).style.backgroundColor = "#95cB72" //and above
+
             //why the hell does js not have a list index remove function
             var temp_index = unguessed_ids.indexOf(parseInt(id));
             if (temp_index !== -1) {
