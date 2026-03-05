@@ -6,6 +6,10 @@ body{
   margin: 0; /* crazy that this is necessary to prevent scrollbars from popping up */
 }
 
+text {
+    font-size: 14px;
+}
+
 .parent {
   display: flex;
   justify-content: space-around;
@@ -15,7 +19,7 @@ body{
 }
 
 .space {
-  --size: 42px;
+  --size: 40px;
   width: var(--size);
   height: var(--size);
   font-size: var(--size);

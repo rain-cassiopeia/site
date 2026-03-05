@@ -82,3 +82,9 @@ O x x B x B x
 `
 
 ok i like this. RULE: absolutely no color previews
+
+
+thought: we turn the letters green as soon as they are correct like wordle, but after that
+we FADE them a bit so they aren't so jarring. i should play wth color anyway that green is way too much.
+noting how wordle is like light and inverse once its filled? could be the move.
+anyway, also obv localstorageeeee to come

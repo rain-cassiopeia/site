@@ -2,7 +2,13 @@ const SOLUTION = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0
 console.log(SOLUTION);
 document.getElementById('solution_circle').style.fill = SOLUTION;
 document.body.style.background = `linear-gradient(${SOLUTION}, ${SOLUTION} 75px, white 115px)`;
-colorText(SOLUTION);
+
+if (colorText(SOLUTION, document.getElementById("title"))) {
+    document.getElementById("title").style.color = "white";
+} else {
+    document.getElementById("title").style.color = "black";
+}
+
 
 const NUM_ROUNDS = 6;
 const allowed_chars = "0123456789abcdefABCDEF" //allowed characters
@@ -104,6 +110,11 @@ function process_guess() { // this runs when a guess gets guessed
 
     //handle percentage text
     document.getElementById('percent_'+ROUND.toString()).textContent = percentage_difference(SOLUTION, guess)+'%';
+    if (colorText(guess, document.getElementById('percent_'+ROUND.toString()))) {
+        document.getElementById('percent_'+ROUND.toString()).style.fill = "white";
+    } else {
+        document.getElementById('percent_'+ROUND.toString()).style.fill = "black";
+    }
 
     ids.forEach(id => {
         document.getElementById('r_'+ROUND.toString()+'_'+id).textContent =
@@ -135,7 +146,7 @@ function process_guess() { // this runs when a guess gets guessed
     }
 };
 
-function colorText(colr) { //sets text to black or white for max background contrast
+function colorText(colr, txt) { //sets text to black or white for max background contrast
     // W3 guideline for luminance is (0.299*R + 0.587*G + 0.114*B)
     // colr is a string hex code including the #
     let R = colr.substring(1,3);
@@ -148,8 +159,8 @@ function colorText(colr) { //sets text to black or white for max background cont
 
     let middle_grey = (0.299*128 + 0.587*128 + 0.114*128);
     let luminance = (0.299*R + 0.587*G + 0.114*B);
-    if (luminance > middle_grey) { document.getElementById("title").style.color = "black";}
-    else { document.getElementById("title").style.color = "white";}
+    if (luminance > middle_grey) {return false}
+    else {return true}
 }
 
 function percentage_difference(col_1, col_2) { //it do what it says on the tin
@@ -172,7 +183,12 @@ function percentage_difference(col_1, col_2) { //it do what it says on the tin
     let dg = Math.abs(G1-G2);
     let db = Math.abs(B1-B2);
 
-    return Math.round((dr+dg+db)/(255*3)*100); //hacky way to get one decial point NEEDS FIXING HERE
+    let p = ((255*3)-(dr+dg+db))/(255*3);
+    return Math.round(p*1000)/10
+    /*
+    f(765)=0
+    f(0)=100
+    */
 }
 
-console.log("ITS THISS "+percentage_difference("#fffffe","#000000"))
+// console.log("ITS THISS "+percentage_difference("#fffffe","#000000"))
