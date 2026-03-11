@@ -16,15 +16,17 @@
             <h1><span id = "title">GUESS THIS COLOR</span></h1>
         </div>
 
-        <div class="parent" id = "hint_circles" style="width: 425px; font-size: 20px; padding-top: 60px;
-            padding-bottom: 40px; justify-content: space-between; visibility: hidden;">
-            <div class="parent" style="width: 200px; justify-content: flex-end;">
-                solution &nbsp; &nbsp;
+        <div class="parent" style="font-size: 20px; padding-top: 60px;
+            padding-bottom: 40px; justify-content: center">
+            <div class="parent" id = "solution_tag" style="width: 240px; justify-content: flex-end;">
+                target color &nbsp; &nbsp;
                 <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                     <circle id = "solution_circle" r="25" cx="25" cy="25"/>
                 </svg>
+                &nbsp; &nbsp; &nbsp; &nbsp;
             </div>
-            <div class="parent" style="width: 200px; justify-content: flex-start;">
+            <div class="parent" id="guess_tag" style="width: 240px; justify-content: flex-start; display: none;">
+                &nbsp; &nbsp; &nbsp; &nbsp;
                 <svg height="50" width="50" xmlns="http://www.w3.org/2000/svg">
                     <circle id = "guess_circle" r="25" cx="25" cy="25"/>
                 </svg>
@@ -101,6 +103,57 @@
         </div>
 
     </div>
+
+    <div class="overlay"></div>
+
+    <div class="scoreboard">
+        <div class="close_button" onclick="
+            document.getElementsByClassName('scoreboard')[0].style.display='none';
+            document.getElementsByClassName('overlay')[0].style.display='none'">X
+        </div>
+        <span id="message"><h2>Statistics</h2></span>
+        <span>
+            <span id="gamesplayed">0</span> games played
+            <span style="margin-left: 20px"id="winpercent">0</span>% win percentage
+        </span>
+        <div class="barchart_container">
+            <div class="bar_parent">
+                <span style="width:20px">1</span>
+                <div class="bar" id="bar_1"></div>
+            </div>
+            <div class="bar_parent">
+                <span style="width:20px">2</span>
+                <div class="bar" id="bar_2"></div>
+            </div>
+            <div class="bar_parent">
+                <span style="width:20px">3</span>
+                <div class="bar" id="bar_3"></div>
+            </div>
+            <div class="bar_parent">
+                <span style="width:20px">4</span>
+                <div class="bar" id="bar_4"></div>
+            </div>
+            <div class="bar_parent">
+                <span style="width:20px">5</span>
+                <div class="bar" id="bar_5"></div>
+            </div>
+            <div class="bar_parent">
+                <span style="width:20px">6</span>
+                <div class="bar" id="bar_6"></div>
+            </div>
+        </div>
+        <div class="parent">
+            <div class="button" onclick="location.reload()">
+                new game
+            </div>
+            <div class="button" onclick="
+                document.getElementsByClassName('scoreboard')[0].style.display='none';
+                document.getElementsByClassName('overlay')[0].style.display='none'">
+                keep guessing
+            </div>
+        </div>
+    </div>
+
     <!-- <a href="/" class="gif-button"></a> -->
     <script src="script.js"></script>
 </body>

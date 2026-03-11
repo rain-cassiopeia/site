@@ -88,3 +88,20 @@ thought: we turn the letters green as soon as they are correct like wordle, but 
 we FADE them a bit so they aren't so jarring. i should play wth color anyway that green is way too much.
 noting how wordle is like light and inverse once its filled? could be the move.
 anyway, also obv localstorageeeee to come
+
+ok local storage time, i think the bar chart is actually radically doable. we can just set bars
+and calculate the percentages of each guess with js. have them live within a container, and width
+can be 20% minimum to 100% maximum, just set width with js. this is so cool.
+
+ok so what info do i need to store. we can just tally losses and wins per count of win. and all the other math
+can be done live, since it will need to be done in the browser anyway and that leaves less room for error.
+
+danny recommended changes:
+show color hex code at the end
+more GUESSES
+maybe confetti in target color at end
+we dont like the gradient
+
+BIG IDEA
+loss screen: <NEW GAME> <KEEP GUESSING>
+so stats are calculated out of 6, but you can keep trying if ur frustrated. they're a genius for that 

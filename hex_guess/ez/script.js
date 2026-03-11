@@ -1,9 +1,9 @@
-const SOLUTION = '#'+(Math.random() * 0xFFF << 0).toString(16).padStart(3, '0');
+const SOLUTION = '#'+(Math.random() * 0xFFF << 0).toString(16).padStart(3, '0'); //generate solution
 console.log(SOLUTION);
-document.getElementById('solution_circle').style.fill = SOLUTION;
-document.body.style.background = `linear-gradient(${SOLUTION}, ${SOLUTION} 75px, white 115px)`;
+document.getElementById('solution_circle').style.fill = SOLUTION; //fill solution circle
+document.body.style.background = `linear-gradient(${SOLUTION}, ${SOLUTION} 81px, white 81px)`; //fill background
 
-if (colorText(SOLUTION, document.getElementById("title"))) {
+if (colorText(SOLUTION, document.getElementById("title"))) { //set title color for contrast
     document.getElementById("title").style.color = "white";
 } else {
     document.getElementById("title").style.color = "black";
@@ -16,16 +16,24 @@ const ids = ['1', '2', '3'];
 
 
 let GUESS = '';
-let ROUND = 0; //idk why i wnated to call it this the literal name would be GUESSES
+let ROUND = 0; //idk why i wanted to call it this the literal name would be GUESSES
 let CURRENT_FOCUS = 1; //we start at the beginning
 let unguessed_ids = [1, 2, 3, 4]; //nothing is guessed at the start.
 //its necessary to have 4 there because there's a fourth invisible id that the focus moves to so as
 //to prevent further typing at line end.
 
+for (const key of ['losses', 'wins1', 'wins2', 'wins3', 'wins4', 'wins5', 'wins6']) { //initialize local storage
+    if (localStorage[key] === undefined) {
+        localStorage[key] = 0;
+        console.log(key);
+    }
+}
+
 // red = SOLUTION.substring(1,3);
 // green = SOLUTION.substring(3,5);
 // blue = SOLUTION.substring(5,7);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 ids.forEach(id => { //setting typing event listener for each element in guess_container
     document.getElementById(id).addEventListener('input', function (event) {
@@ -86,7 +94,7 @@ document.getElementById('guess_container').addEventListener('focusout', function
 });
 
 function process_guess() { // this runs when a guess gets guessed
-    if (ROUND == 0) {document.getElementById('hint_circles').style.visibility = ""} //show top circles
+    if (ROUND == 0) {document.getElementById('guess_tag').style.display = ""} //show top circles
 
     ROUND += 1;
 
@@ -98,12 +106,6 @@ function process_guess() { // this runs when a guess gets guessed
 
     document.getElementById('guess_circle').style.fill = guess;
     document.getElementById('guess_'+ROUND.toString()+'_circle').style.fill = guess; //fill guess circles
-
-
-    if (guess == SOLUTION) {
-        console.log("WE WIN THESE");
-        // do smth
-    }
 
     ids.forEach(id => {
         document.getElementById('r_'+ROUND.toString()+'_'+id).textContent =
@@ -128,11 +130,67 @@ function process_guess() { // this runs when a guess gets guessed
 
     document.getElementById('result_'+ROUND.toString()).style.display = "";
 
-    if (ROUND == NUM_ROUNDS) { //hide guess container when game is done
+    if (guess == SOLUTION) {
+        // console.log("WE WIN THESE");
+        document.getElementById('guess_container').style.display = "none"; //hiding guess container is a start
+        win_condition(); //let's handle wins and losses in their own functions
+    } else if (ROUND == NUM_ROUNDS) { //hide guess container when game is done
         document.getElementById('guess_container').style.display = "none";
-        //probably want to do more here eventually. like a you lost dialogue.
+        loss_condition();
     }
 };
+
+function win_condition() {//handling user winning
+    localStorage["wins"+ROUND.toString()] = parseInt(localStorage["wins"+ROUND.toString()]) + 1;
+    document.getElementById('message').innerHTML = "<h2>YOU WON</h2>";
+    stats_screen();
+}
+
+function loss_condition() {//handling user losing
+    localStorage.losses = parseInt(localStorage.losses) + 1;
+    document.getElementById('message').innerHTML = '<h2>YOU LOST</h2>';
+    stats_screen();
+}
+
+function stats_screen() {//generic stuff that loss condition and win condition share
+    document.getElementsByClassName('scoreboard')[0].style.display='flex';
+    document.getElementsByClassName('overlay')[0].style.display='block';
+    var gamesplayed =
+    parseInt(localStorage.losses)  +
+    parseInt(localStorage.wins1) +
+    parseInt(localStorage.wins2) +
+    parseInt(localStorage.wins3) +
+    parseInt(localStorage.wins4) +
+    parseInt(localStorage.wins5) +
+    parseInt(localStorage.wins6);
+    document.getElementById("gamesplayed").textContent = gamesplayed;
+
+    var wins = gamesplayed - parseInt(localStorage.losses);
+    var winpercent = Math.round((wins / gamesplayed) * 1000)/10;
+    document.getElementById("winpercent").textContent = winpercent;
+
+    //here im gonna set bar chart stuff
+    var percent1 = parseInt(localStorage.wins1) / wins; //percentage of games guessed first try
+    var percent2 = parseInt(localStorage.wins2) / wins;
+    var percent3 = parseInt(localStorage.wins3) / wins;
+    var percent4 = parseInt(localStorage.wins4) / wins;
+    var percent5 = parseInt(localStorage.wins5) / gamesplayed;
+    var percent6 = parseInt(localStorage.wins6) / gamesplayed;
+
+    for (var i = 1; i < 7; i++) {
+        var wins_i = parseInt(localStorage["wins"+i.toString()])
+        var percent_wins = wins_i / wins;
+        percent_wins = Math.round(percent_wins * 100) //this is the percentage of games won in the ith round
+        //set text of each bar to reflect number of wins at that score
+        document.getElementById('bar_'+i.toString()).textContent = wins_i.toString();
+        //and set width of bar to correspond
+        document.getElementById('bar_'+i.toString()).style.width = `${(percent_wins * .8) + 20}%`;
+    }
+
+
+
+}
+stats_screen()
 
 function colorText(colr, txt) { //sets text to black or white for max background contrast
     // W3 guideline for luminance is (0.299*R + 0.587*G + 0.114*B)
@@ -150,3 +208,8 @@ function colorText(colr, txt) { //sets text to black or white for max background
     if (luminance > middle_grey) {return false}
     else {return true}
 }
+
+document.getElementsByClassName('overlay')[0].addEventListener("click", function(event) {
+    document.getElementsByClassName('scoreboard')[0].style.display='none';
+    document.getElementsByClassName('overlay')[0].style.display='none';
+});
