@@ -4,13 +4,15 @@ document.getElementById('solution_circle').style.fill = SOLUTION; //fill solutio
 document.body.style.background = `linear-gradient(${SOLUTION}, ${SOLUTION} 81px, white 81px)`; //fill background
 
 if (colorText(SOLUTION, document.getElementById("title"))) { //set title color for contrast
+    document.getElementById("bar_icon").style.fill = "white";
     document.getElementById("title").style.color = "white";
 } else {
+    document.getElementById("bar_icon").style.fill = "black";
     document.getElementById("title").style.color = "black";
 }
 
-
 const NUM_ROUNDS = 6;
+const ACTUAL_LAST_ROUND = 10; //you lose after 6, but u can keep guessing for fun!
 const allowed_chars = "0123456789abcdefABCDEF" //allowed characters
 const ids = ['1', '2', '3'];
 
@@ -93,6 +95,11 @@ document.getElementById('guess_container').addEventListener('focusout', function
     setFocusAndCursor(CURRENT_FOCUS.toString()); //nah, let's stay *focused*
 });
 
+document.getElementsByClassName('overlay')[0].addEventListener("click", function(event) {
+    document.getElementsByClassName('scoreboard')[0].style.display='none';
+    document.getElementsByClassName('overlay')[0].style.display='none';
+});
+
 function process_guess() { // this runs when a guess gets guessed
     if (ROUND == 0) {document.getElementById('guess_tag').style.display = ""} //show top circles
 
@@ -135,8 +142,9 @@ function process_guess() { // this runs when a guess gets guessed
         document.getElementById('guess_container').style.display = "none"; //hiding guess container is a start
         win_condition(); //let's handle wins and losses in their own functions
     } else if (ROUND == NUM_ROUNDS) { //hide guess container when game is done
-        document.getElementById('guess_container').style.display = "none";
         loss_condition();
+    } else if (ROUND == ACTUAL_LAST_ROUND) {
+        document.getElementById('guess_container').style.display = "none";
     }
 };
 
@@ -186,11 +194,7 @@ function stats_screen() {//generic stuff that loss condition and win condition s
         //and set width of bar to correspond
         document.getElementById('bar_'+i.toString()).style.width = `${(percent_wins * .8) + 20}%`;
     }
-
-
-
 }
-stats_screen()
 
 function colorText(colr, txt) { //sets text to black or white for max background contrast
     // W3 guideline for luminance is (0.299*R + 0.587*G + 0.114*B)
@@ -208,8 +212,3 @@ function colorText(colr, txt) { //sets text to black or white for max background
     if (luminance > middle_grey) {return false}
     else {return true}
 }
-
-document.getElementsByClassName('overlay')[0].addEventListener("click", function(event) {
-    document.getElementsByClassName('scoreboard')[0].style.display='none';
-    document.getElementsByClassName('overlay')[0].style.display='none';
-});
